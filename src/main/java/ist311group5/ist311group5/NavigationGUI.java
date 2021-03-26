@@ -34,12 +34,14 @@ public class NavigationGUI{
         
         Button chatBtn = new Button("Chat");
         rootPane.add(chatBtn, 1, 2);
+        
         chatBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                actiontarget.setFill(Color.BLUE);
-                actiontarget.setText("Chat button clicked!");           
+                ChatGUI chatGui = new ChatGUI(navStage);
+                rootPane.getScene().setRoot(chatGui.getRootPane());
             }
+                
         });
         
         Button settingBtn = new Button("Account Settings");
@@ -47,8 +49,8 @@ public class NavigationGUI{
         settingBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                actiontarget.setFill(Color.GREEN);
-                actiontarget.setText("Account settings button clicked!");           
+                    actiontarget.setFill(Color.GREEN);
+                    actiontarget.setText("Account settings button clicked!");           
             }
         });
     }
