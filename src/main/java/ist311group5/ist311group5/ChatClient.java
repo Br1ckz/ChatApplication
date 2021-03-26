@@ -17,19 +17,18 @@ public class ChatClient extends Thread {
   
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Trying Client");
-        
+
         try {
             socket = new Socket("localhost", 5000);
             
-            
-            System.out.println(socket.getLocalPort());
             dataInput = new DataInputStream(socket.getInputStream());
             dataOutput = new DataOutputStream(socket.getOutputStream());
             
             String thisUser = "", otherUser = "";
             System.out.println("Client running");
+            System.out.println("You can enter you message here.");
             while (true) {
+                
                 thisUser = scanner.nextLine();
 
                 dataOutput.writeUTF(thisUser);

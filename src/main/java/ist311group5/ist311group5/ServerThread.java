@@ -19,7 +19,6 @@ public class ServerThread implements Runnable{
         ArrayList<ChatServer> threadList = new ArrayList<>();
         try {
             while (true) {
-                System.out.println("Server listening on port " + serverSocket.getLocalPort());
                 Socket socket = serverSocket.accept();            
                 ChatServer chatServer = new ChatServer(socket, threadList);
                 threadList.add(chatServer);

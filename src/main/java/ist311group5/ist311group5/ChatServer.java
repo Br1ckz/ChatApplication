@@ -29,14 +29,9 @@ public class ChatServer extends Thread {
             DataOutputStream dataOutput = new DataOutputStream(socket.getOutputStream());
 
             String thisUser = "", otherUser = "";
-            System.out.println("Server running");
             while (true) {
-
                 thisUser = dataInput.readUTF();
-
-                System.out.println("Server: You said \"" + thisUser + "\"");
-
-                
+                System.out.println("Server: You said \"" + thisUser + "\"");        
             }
 //            dataInput.close();
 //            dataOutput.close();

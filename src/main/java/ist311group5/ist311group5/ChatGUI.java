@@ -64,18 +64,17 @@ public class ChatGUI {
         Button sendBtn = new Button("Send");
         
         rootPane.add(sendBtn, 3, 4);
-        connectBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                chatArea.setText(chatArea.getText() + messageBox.getText());
-            }
-                
-        });
+//        connectBtn.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent e) {
+//                chatArea.setText(chatArea.getText() + messageBox.getText());
+//            }
+//                
+//        });
         
     }
     
     public Pane getRootPane() {
         return rootPane;
     }
-    
 }

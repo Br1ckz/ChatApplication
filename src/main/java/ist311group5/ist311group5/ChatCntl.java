@@ -18,7 +18,6 @@ public class ChatCntl {
         } catch (Exception e) {};
     }
     
-    
     public static String getInput(String message) {
         return message;
     }
