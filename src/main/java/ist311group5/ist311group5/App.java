@@ -71,8 +71,8 @@ public class App extends Application {
                 if (loginRes) {
                     actiontarget.setFill(Color.BLUE);
                     actiontarget.setText("Sign in successful!");
-                    NavigationGUI navGui = new NavigationGUI(stage);
-                    stage.getScene().setRoot(navGui.getRootPane());
+                    NavigationGUI navUI = new NavigationGUI(stage);
+                    stage.getScene().setRoot(navUI.getRootPane());
                 } else {
                     actiontarget.setFill(Color.FIREBRICK);
                     actiontarget.setText("Sign in failed!");

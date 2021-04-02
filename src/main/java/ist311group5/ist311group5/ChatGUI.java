@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 
 public class ChatGUI {
     private final GridPane rootPane;
+    private Label chatArea;
     public ChatGUI(Stage chatStage) {
         rootPane = new GridPane();
         var scene = new Scene(rootPane, 630, 480);
@@ -43,7 +44,7 @@ public class ChatGUI {
 //        final Text actiontarget = new Text();
 //        rootPane.add(actiontarget, 1, 6);
         
-        Label chatArea = new Label("Chat Area");
+        chatArea = new Label();
         rootPane.add(chatArea, 2, 3);
 
 
@@ -64,14 +65,18 @@ public class ChatGUI {
         Button sendBtn = new Button("Send");
         
         rootPane.add(sendBtn, 3, 4);
-//        connectBtn.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent e) {
-//                chatArea.setText(chatArea.getText() + messageBox.getText());
-//            }
-//                
-//        });
+        sendBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                chatArea.setText(chatArea.getText() + "\nYou:" + messageBox.getText());
+            }
+                
+        });
         
+    }
+
+    public void updateChat(String line) {
+        chatArea.setText(chatArea.getText() + "\nServer:You said\"" + line + "\"");
     }
     
     public Pane getRootPane() {

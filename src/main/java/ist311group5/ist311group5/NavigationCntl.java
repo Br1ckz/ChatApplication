@@ -5,9 +5,8 @@
  */
 package ist311group5.ist311group5;
 
+import javafx.scene.layout.Pane;
+
 public class NavigationCntl{
-    
-    public NavigationCntl() {
-    
-    }
+
 }

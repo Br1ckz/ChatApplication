@@ -28,10 +28,10 @@ public class ChatServer extends Thread {
             DataInputStream dataInput = new DataInputStream(socket.getInputStream());
             DataOutputStream dataOutput = new DataOutputStream(socket.getOutputStream());
 
-            String thisUser = "", otherUser = "";
+            String recieved = "";
             while (true) {
-                thisUser = dataInput.readUTF();
-                System.out.println("Server: You said \"" + thisUser + "\"");        
+                recieved = dataInput.readUTF();
+                System.out.println("Server: You said \"" + recieved + "\"");        
             }
 //            dataInput.close();
 //            dataOutput.close();
