@@ -6,9 +6,15 @@
 package ist311group5.ist311group5;
 
 import java.net.ServerSocket;
+import javafx.stage.Stage;
 
 public class ChatCntl {
-
+    private ChatGUI chatUI; 
+    public void run(Stage stage) {
+        
+        chatUI = new ChatGUI(stage);
+    }
+    
     public static void chat() {
          try {
             System.out.println("Starting chat");
@@ -20,5 +26,5 @@ public class ChatCntl {
     
     public static String getInput(String message) {
         return message;
-    }
+    }  
 }
