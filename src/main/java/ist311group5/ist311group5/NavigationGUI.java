@@ -39,9 +39,9 @@ public class NavigationGUI{
         chatBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                
-                ChatGUI chatGui = new ChatGUI(navStage);
-                rootPane.getScene().setRoot(chatGui.getRootPane());
+                ChatCntl chatCntl = new ChatCntl(navStage);
+//                ChatGUI chatGui = new ChatGUI(navStage);
+//                rootPane.getScene().setRoot(chatGui.getRootPane());
             }
                 
         });
