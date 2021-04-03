@@ -24,8 +24,10 @@ import java.io.FileNotFoundException;
  * JavaFX App
  */
 public class App extends Application {
+    private Stage stage;
     @Override
     public void start(Stage stage) throws IOException {
+        this.stage = stage;
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
@@ -71,8 +73,10 @@ public class App extends Application {
                 if (loginRes) {
                     actiontarget.setFill(Color.BLUE);
                     actiontarget.setText("Sign in successful!");
-                    NavigationGUI navUI = new NavigationGUI(stage);
-                    stage.getScene().setRoot(navUI.getRootPane());
+                    
+                    NavigationCntl navCntl = new NavigationCntl(stage);
+//                    NavigationGUI navUI = new NavigationGUI(stage);
+//                    stage.getScene().setRoot(navUI.getRootPane());
                 } else {
                     actiontarget.setFill(Color.FIREBRICK);
                     actiontarget.setText("Sign in failed!");
