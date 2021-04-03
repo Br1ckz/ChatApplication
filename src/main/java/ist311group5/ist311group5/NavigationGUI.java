@@ -15,8 +15,9 @@ import javafx.scene.paint.Color;
 public class NavigationGUI{
     
     private final GridPane rootPane;  
-    
-    public NavigationGUI(Stage navStage) {
+    private NavigationCntl navCntl;
+    public NavigationGUI(Stage navStage, NavigationCntl cntl) {
+        navCntl = cntl;
         rootPane = new GridPane();
         rootPane.setAlignment(Pos.CENTER);
         rootPane.setHgap(10);
@@ -38,6 +39,7 @@ public class NavigationGUI{
         chatBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                
                 ChatGUI chatGui = new ChatGUI(navStage);
                 rootPane.getScene().setRoot(chatGui.getRootPane());
             }
@@ -58,4 +60,7 @@ public class NavigationGUI{
     public Pane getRootPane() {
         return rootPane;
     }
+    
+    
+    
 }
