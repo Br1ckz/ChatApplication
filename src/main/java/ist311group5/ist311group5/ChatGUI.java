@@ -20,9 +20,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class ChatGUI {
+    private ChatCntl controller;
     private final GridPane rootPane;
     private Label chatArea;
-    public ChatGUI(Stage chatStage) {
+    public ChatGUI(Stage chatStage, ChatCntl chatController) {
+        controller = chatController;
         rootPane = new GridPane();
         var scene = new Scene(rootPane, 630, 480);
         chatStage.setScene(scene);
@@ -57,7 +59,8 @@ public class ChatGUI {
         connectBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                ChatCntl.chat(); 
+                chatArea.setText("");
+                controller.chat(); 
             }
                 
         });
@@ -68,16 +71,23 @@ public class ChatGUI {
         sendBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                chatArea.setText(chatArea.getText() + "\nYou:" + messageBox.getText());
+                updateChat("Client", messageBox.getText());
+                controller.chatInput(messageBox.getText());
             }
                 
         });
         
     }
 
-    public void updateChat(String line) {
-        chatArea.setText(chatArea.getText() + "\nServer:You said\"" + line + "\"");
+    public void updateChat(String type, String message) {
+        if (type.equals("Server")) 
+            chatArea.setText(chatArea.getText() + "\nServer:You said\"" + message + "\"");
+        else 
+            chatArea.setText(chatArea.getText() + "\nYou:" + message + "\"");
     }
+    
+    
+    
     
     public Pane getRootPane() {
         return rootPane;

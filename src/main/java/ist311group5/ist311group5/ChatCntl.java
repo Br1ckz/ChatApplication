@@ -9,22 +9,38 @@ import java.net.ServerSocket;
 import javafx.stage.Stage;
 
 public class ChatCntl {
-    private ChatGUI chatUI; 
-    public void run(Stage stage) {
-        
-        chatUI = new ChatGUI(stage);
+    private ChatGUI chatUI;
+    private ChatClient client;
+    private ServerThread serverThread;
+    
+    public ChatCntl(Stage stage) {
+        chatUI = new ChatGUI(stage, this);
     }
     
-    public static void chat() {
+    
+    
+//    public void run(Stage stage) {
+//        
+//        chatUI = new ChatGUI(stage);
+//    }
+    
+    public void chat() {
          try {
             System.out.println("Starting chat");
             ServerSocket serverSocket = new ServerSocket(5000);
-            new Thread(new ServerThread(serverSocket)).start();
-            new Thread(new ChatClient()).start();
+            new Thread(serverThread = new ServerThread(serverSocket, this)).start();
+            new Thread(client = new ChatClient()).start();
         } catch (Exception e) {};
     }
     
-    public static String getInput(String message) {
-        return message;
+    public void chatInput(String message) {
+        client.sendMessage(message);
     }  
+    
+    public void serverResponse(String message) {
+        chatUI.updateChat("Server", message);
+    }
+    
+    
+    
 }

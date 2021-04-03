@@ -10,9 +10,11 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class ServerThread implements Runnable{
-    ServerSocket serverSocket;
-    public ServerThread (ServerSocket serverSocket) {
+    private ServerSocket serverSocket;
+    private ChatCntl controller;
+    public ServerThread (ServerSocket serverSocket, ChatCntl chatController) {
         this.serverSocket = serverSocket;
+        controller = chatController;
     }
     
     public void run() {
@@ -20,7 +22,7 @@ public class ServerThread implements Runnable{
         try {
             while (true) {
                 Socket socket = serverSocket.accept();            
-                ChatServer chatServer = new ChatServer(socket, threadList);
+                ChatServer chatServer = new ChatServer(socket, threadList, controller);
                 threadList.add(chatServer);
                 chatServer.start();
             }

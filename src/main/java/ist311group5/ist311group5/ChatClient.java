@@ -11,9 +11,9 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ChatClient extends Thread {
-    Socket socket;
-    DataInputStream dataInput;
-    DataOutputStream dataOutput;
+    private Socket socket;
+    private DataInputStream dataInput;
+    private DataOutputStream dataOutput;
   
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -41,4 +41,10 @@ public class ChatClient extends Thread {
         };        
     }
     
+    public void sendMessage(String message) {
+        try {
+            dataOutput.writeUTF(message);
+            dataOutput.flush();
+        } catch (Exception e) { e.printStackTrace();}
+    }
 }
