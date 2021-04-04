@@ -83,7 +83,7 @@ public class ChatGUI {
         if (type.equals("Server")) 
             chatArea.setText(chatArea.getText() + "\nServer:You said\"" + message + "\"");
         else 
-            chatArea.setText(chatArea.getText() + "\nYou:" + message + "\"");
+            chatArea.setText(chatArea.getText() + "\nYou: '" + message + "\'");
     }
     
     
