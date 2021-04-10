@@ -1,11 +1,5 @@
-// Used to create and manipulate account.
- 
 package ist311group5.ist311group5;
 
-/**
- *
- * @author Bryce Ciemiewicz
- */
 public class Account {
     String username;
     String password;

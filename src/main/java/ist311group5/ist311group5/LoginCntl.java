@@ -26,7 +26,9 @@ import java.io.FileNotFoundException;
 
 public class LoginCntl {
     private LoginGUI loginUI;
+    private Stage stage;
     public LoginCntl(Stage stage) {
+        this.stage = stage;
         loginUI = new LoginGUI(stage, this);
     }
     
@@ -47,5 +49,9 @@ public class LoginCntl {
         }
 
         return false;
+    }
+    
+    public void changeControl() {
+        NavigationCntl navCntl = new NavigationCntl(stage);
     }
 }

@@ -1,5 +1,5 @@
-// Used to create account file where credentials are stored.
 package ist311group5.ist311group5;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-/**
- *
- * @author Bryce Ciemiewicz
- */
+
 public class AccountFile {
     String filename;
     String creationDate;

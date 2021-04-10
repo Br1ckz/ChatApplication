@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ist311group5.ist311group5;
 
 import javafx.geometry.Insets;
@@ -20,63 +15,65 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class ChatGUI {
-    private ChatCntl controller;
-    private final GridPane rootPane;
+    private ChatCntl chatCntl;
+    private GridPane rootPane;
     private Label chatArea;
+    private Scene scene;
+    private Stage chatStage;
+    private Text sceneTitle;
+    private TextField messageBox;
     public ChatGUI(Stage chatStage, ChatCntl chatController) {
-        controller = chatController;
-        rootPane = new GridPane();
-        var scene = new Scene(rootPane, 630, 480);
-        chatStage.setScene(scene);
+        this.chatStage = chatStage;
+        chatCntl = chatController;
         setupUI();
+        setupConnectButton();
+        setupSendButton();
+        setupBackButton();
     }
  
     private void setupUI() {
+        rootPane = new GridPane();
+        scene = new Scene(rootPane, 630, 480);
+        chatStage.setScene(scene);
         rootPane.setAlignment(Pos.CENTER);
         rootPane.setHgap(10);
         rootPane.setVgap(10);
         rootPane.setPadding(new Insets(25, 25, 25, 25));
-        
-//        var scene = new Scene(rootPane, 630, 480);
-//        chatStage.setScene(scene);      
-        
-        Text sceneTitle = new Text("Chat GUI");
+
+        sceneTitle = new Text("Chat GUI");
         rootPane.add(sceneTitle, 0, 0, 2, 1);
-        
-//        final Text actiontarget = new Text();
-//        rootPane.add(actiontarget, 1, 6);
         
         chatArea = new Label();
         rootPane.add(chatArea, 2, 3);
 
-
-        TextField messageBox = new TextField();
+        messageBox = new TextField();
         rootPane.add(messageBox, 2, 4);
-        
-        Button connectBtn = new Button("Connect to chat server");
+    }
+    
+    private void setupConnectButton() {
+       Button connectBtn = new Button("Connect to chat server");
         
         rootPane.add(connectBtn, 1, 2);
         connectBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 chatArea.setText("");
-                controller.chat(); 
+                chatCntl.chat(); 
             }
                 
-        });
-        
+        }); 
+    }
+    
+    private void setupSendButton() {
         Button sendBtn = new Button("Send");
-        
         rootPane.add(sendBtn, 3, 4);
         sendBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 updateChat("Client", messageBox.getText());
-                controller.chatInput(messageBox.getText());
-            }
-                
+                chatCntl.chatInput(messageBox.getText());
+            }              
         });
-        
     }
 
     public void updateChat(String type, String message) {
@@ -86,8 +83,16 @@ public class ChatGUI {
             chatArea.setText(chatArea.getText() + "\nYou: '" + message + "\'");
     }
     
-    
-    
+    private void setupBackButton() {
+        Button backButton = new Button("Back");
+        rootPane.add(backButton, 1, 3);
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                chatCntl.changeControl("Back");
+            }
+        });
+    }
     
     public Pane getRootPane() {
         return rootPane;

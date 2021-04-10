@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ist311group5.ist311group5;
 
 import java.net.ServerSocket;
@@ -12,18 +7,12 @@ public class ChatCntl {
     private ChatGUI chatUI;
     private ChatClient client;
     private ServerThread serverThread;
-    
+    private Stage stage;
     public ChatCntl(Stage stage) {
+        this.stage = stage;
         chatUI = new ChatGUI(stage, this);
     }
-    
-    
-    
-//    public void run(Stage stage) {
-//        
-//        chatUI = new ChatGUI(stage);
-//    }
-    
+ 
     public void chat() {
          try {
             System.out.println("Starting chat");
@@ -41,6 +30,11 @@ public class ChatCntl {
         chatUI.updateChat("Server", message);
     }
     
-    
-    
+    public void changeControl(String controller) {
+        if (controller.equals("Chat")) {
+//            ChatCntl chatCntl = new ChatCntl(stage);
+        } else if (controller.equals("Back")) {
+            NavigationCntl navCntl = new NavigationCntl(stage);
+        }
+    }
 }

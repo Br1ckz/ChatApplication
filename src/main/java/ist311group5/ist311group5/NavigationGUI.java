@@ -13,46 +13,67 @@ import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 
 public class NavigationGUI{
-    
-    private final GridPane rootPane;  
+    private GridPane rootPane;  
     private NavigationCntl navCntl;
+    private Scene scene;
+    private Text sceneTitle;
+    private Text actiontarget;
+    private Stage navStage;
     public NavigationGUI(Stage navStage, NavigationCntl cntl) {
+        this.navStage = navStage;
         navCntl = cntl;
+        setupUI();
+        setupChatButton();
+        setupSettingButton();
+        setupBackButton();
+    }
+    
+    private void setupUI() {
         rootPane = new GridPane();
         rootPane.setAlignment(Pos.CENTER);
         rootPane.setHgap(10);
         rootPane.setVgap(10);
         rootPane.setPadding(new Insets(25, 25, 25, 25));
         
-        var scene = new Scene(rootPane, 630, 480);
+        scene = new Scene(rootPane, 630, 480);
         navStage.setScene(scene);      
         
-        Text sceneTitle = new Text("Navigation");
+        sceneTitle = new Text("Navigation");
         rootPane.add(sceneTitle, 0, 0, 2, 1);
         
-        final Text actiontarget = new Text();
+        actiontarget = new Text();
         rootPane.add(actiontarget, 1, 6);
-        
+    }
+    
+    private void setupChatButton() {
         Button chatBtn = new Button("Chat");
-        rootPane.add(chatBtn, 1, 2);
-        
+        rootPane.add(chatBtn, 1, 2); 
         chatBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                ChatCntl chatCntl = new ChatCntl(navStage);
-//                ChatGUI chatGui = new ChatGUI(navStage);
-//                rootPane.getScene().setRoot(chatGui.getRootPane());
+                navCntl.changeControl("Chat");
             }
-                
         });
-        
+    }
+    
+    private void setupSettingButton() {
         Button settingBtn = new Button("Account Settings");
         rootPane.add(settingBtn, 2, 2);
         settingBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                    actiontarget.setFill(Color.GREEN);
-                    actiontarget.setText("Account settings button clicked!");           
+                navCntl.changeControl("Account Setting");
+            }
+        });
+    }
+   
+    private void setupBackButton() {
+        Button backButton = new Button("Back");
+        rootPane.add(backButton, 1, 3);
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                navCntl.changeControl("Back");
             }
         });
     }
@@ -60,7 +81,4 @@ public class NavigationGUI{
     public Pane getRootPane() {
         return rootPane;
     }
-    
-    
-    
 }
