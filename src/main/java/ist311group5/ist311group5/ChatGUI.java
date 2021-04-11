@@ -13,6 +13,9 @@ import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 
 public class ChatGUI {
     private ChatCntl chatCntl;
@@ -22,6 +25,7 @@ public class ChatGUI {
     private Stage chatStage;
     private Text sceneTitle;
     private TextField messageBox;
+    
     public ChatGUI(Stage chatStage, ChatCntl chatController) {
         this.chatStage = chatStage;
         chatCntl = chatController;
@@ -43,8 +47,10 @@ public class ChatGUI {
         rootPane.setVgap(10);
         rootPane.setPadding(new Insets(25, 25, 25, 25));
 
-        sceneTitle = new Text("Chat GUI");
-        rootPane.add(sceneTitle, 0, 0, 2, 1);
+        sceneTitle = new Text("Chat");
+        Font font = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 15);
+        sceneTitle.setFont(font);
+        rootPane.add(sceneTitle, 0, 0, 2, 5);
         
         chatArea = new Label();
         rootPane.add(chatArea, 2, 3);
@@ -56,7 +62,7 @@ public class ChatGUI {
     
     private void setupChatUI(){
         messageBox = new TextField();
-        rootPane.add(messageBox, 2, 4);
+        rootPane.add(messageBox, 2, 7);
     }
     
     /**
@@ -66,7 +72,7 @@ public class ChatGUI {
     private void setupConnectButton() {
        Button connectBtn = new Button("Connect to chat server");
         
-        rootPane.add(connectBtn, 1, 2);
+        rootPane.add(connectBtn, 1, 6);
         connectBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -86,7 +92,7 @@ public class ChatGUI {
     
     private void setupSendButton() {
         Button sendBtn = new Button("Send");
-        rootPane.add(sendBtn, 3, 4);
+        rootPane.add(sendBtn, 3, 7);
         sendBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -114,8 +120,8 @@ public class ChatGUI {
     */
     
     private void setupBackButton() {
-        Button backButton = new Button("Back");
-        rootPane.add(backButton, 1, 3);
+        Button backButton = new Button("Cancel");
+        rootPane.add(backButton, 1, 8);
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
