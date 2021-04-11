@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
+import javafx.scene.control.Label;
 
 public class NavigationGUI{
     private GridPane rootPane;  
@@ -19,6 +20,8 @@ public class NavigationGUI{
     private Text sceneTitle;
     private Text actiontarget;
     private Stage navStage;
+    private Label loginText;
+            
     public NavigationGUI(Stage navStage, NavigationCntl cntl) {
         this.navStage = navStage;
         navCntl = cntl;
@@ -38,16 +41,13 @@ public class NavigationGUI{
         scene = new Scene(rootPane, 630, 480);
         navStage.setScene(scene);      
         
-        sceneTitle = new Text("Navigation");
-        rootPane.add(sceneTitle, 0, 0, 2, 1);
-        
         actiontarget = new Text();
         rootPane.add(actiontarget, 1, 6);
     }
     
     private void setupChatButton() {
-        Button chatBtn = new Button("Chat");
-        rootPane.add(chatBtn, 1, 2); 
+        Button chatBtn = new Button("                    Start A Chat                        ");
+        rootPane.add(chatBtn, 1, 1); 
         chatBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -57,18 +57,18 @@ public class NavigationGUI{
     }
     
     private void setupSettingButton() {
-        Button settingBtn = new Button("Account Settings");
-        rootPane.add(settingBtn, 2, 2);
+        Button settingBtn = new Button("                  Account Settings                  ");
+        rootPane.add(settingBtn, 1, 2);
         settingBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                navCntl.changeControl("Account Settings");
+                navCntl.changeControl("Account Setting");
             }
         });
     }
    
     private void setupBackButton() {
-        Button backButton = new Button("Logout");
+        Button backButton = new Button("                   Exit Application                   ");
         rootPane.add(backButton, 1, 3);
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -80,5 +80,19 @@ public class NavigationGUI{
     
     public Pane getRootPane() {
         return rootPane;
+    }
+
+    /**
+     * @return the loginText
+     */
+    public Label getLoginText() {
+        return loginText;
+    }
+
+    /**
+     * @param loginText the loginText to set
+     */
+    public void setLoginText(Label loginText) {
+        this.loginText = loginText;
     }
 }
