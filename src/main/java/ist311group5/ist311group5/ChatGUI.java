@@ -30,6 +30,10 @@ public class ChatGUI {
         setupBackButton();
     }
  
+    /**
+     * Sets up the connection UI
+     */
+    
     private void setupConnectUI() {
         rootPane = new GridPane();
         scene = new Scene(rootPane, 630, 480);
@@ -46,10 +50,18 @@ public class ChatGUI {
         rootPane.add(chatArea, 2, 3);
     }
     
+    /**
+     * Sets up the chat UI
+     */
+    
     private void setupChatUI(){
         messageBox = new TextField();
         rootPane.add(messageBox, 2, 4);
     }
+    
+    /**
+     * Sets up the connection button
+     */
     
     private void setupConnectButton() {
        Button connectBtn = new Button("Connect to chat server");
@@ -68,6 +80,10 @@ public class ChatGUI {
         }); 
     }
     
+    /**
+     * Sets up the send button
+     */
+    
     private void setupSendButton() {
         Button sendBtn = new Button("Send");
         rootPane.add(sendBtn, 3, 4);
@@ -80,12 +96,22 @@ public class ChatGUI {
         });
     }
 
+    /**
+     * Updates chat when a message is submitted
+     * @param type
+     * @param message 
+     */
+    
     public void updateChat(String type, String message) {
         if (type.equals("Server")) 
             chatArea.setText(chatArea.getText() + "\nServer:You said\"" + message + "\"");
         else 
             chatArea.setText(chatArea.getText() + "\nYou: '" + message + "\'");
     }
+    
+    /**
+    * Sets up back button
+    */
     
     private void setupBackButton() {
         Button backButton = new Button("Back");
@@ -97,6 +123,11 @@ public class ChatGUI {
             }
         });
     }
+    
+    /**
+     * Gets root pane
+     * @return root pane
+     */
     
     public Pane getRootPane() {
         return rootPane;
