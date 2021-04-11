@@ -16,6 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -53,20 +56,22 @@ public class LoginGUI {
         
         stage.setScene(scene);
         
-        sceneTitle = new Text("Chat Application");
-        grid.add(sceneTitle, 0, 0, 2, 1);
+        sceneTitle = new Text("Login");
+        Font font = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 25);
+        sceneTitle.setFont(font);
+        grid.add(sceneTitle, 0, 0, 1, 1);
         
         userName = new Label("Username:");
-        grid.add(userName, 0, 1);
+        grid.add(userName, 0, 2);
         
         userTextField = new TextField();
-        grid.add(userTextField, 1, 1);
+        grid.add(userTextField, 1, 2);
        
         password = new Label("Password:");
-        grid.add(password, 0, 2);
+        grid.add(password, 0, 3);
         
         passwordField = new TextField();
-        grid.add(passwordField, 1, 2);
+        grid.add(passwordField, 1, 3);
         
         loginBtn = new Button("Login");
         grid.add(loginBtn, 1, 4);
