@@ -25,13 +25,12 @@ public class ChatGUI {
     public ChatGUI(Stage chatStage, ChatCntl chatController) {
         this.chatStage = chatStage;
         chatCntl = chatController;
-        setupUI();
+        setupConnectUI();
         setupConnectButton();
-        setupSendButton();
         setupBackButton();
     }
  
-    private void setupUI() {
+    private void setupConnectUI() {
         rootPane = new GridPane();
         scene = new Scene(rootPane, 630, 480);
         chatStage.setScene(scene);
@@ -45,7 +44,9 @@ public class ChatGUI {
         
         chatArea = new Label();
         rootPane.add(chatArea, 2, 3);
-
+    }
+    
+    private void setupChatUI(){
         messageBox = new TextField();
         rootPane.add(messageBox, 2, 4);
     }
@@ -59,6 +60,9 @@ public class ChatGUI {
             public void handle(ActionEvent e) {
                 chatArea.setText("");
                 chatCntl.chat(); 
+                setupSendButton();
+                setupChatUI();
+                connectBtn.setVisible(false);
             }
                 
         }); 
