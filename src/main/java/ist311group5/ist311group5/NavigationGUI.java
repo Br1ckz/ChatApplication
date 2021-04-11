@@ -62,18 +62,18 @@ public class NavigationGUI{
         settingBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                navCntl.changeControl("Account Setting");
+                navCntl.changeControl("Account Settings");
             }
         });
     }
    
     private void setupBackButton() {
-        Button backButton = new Button("Back");
+        Button backButton = new Button("Logout");
         rootPane.add(backButton, 1, 3);
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                navCntl.changeControl("Back");
+                navCntl.changeControl("Logout");
             }
         });
     }
