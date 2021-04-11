@@ -15,7 +15,7 @@ public class NavigationCntl{
             ChatCntl chatCntl = new ChatCntl(stage);
         } else if (controller.equals("Account Setting")) {
             AccountSettingCntl accountSettingCntl = new AccountSettingCntl(stage);
-        } else if (controller.equals("Back")) {
+        } else if (controller.equals("Logout")) {
             LoginCntl loginCntl = new LoginCntl(stage);
         }
     }
