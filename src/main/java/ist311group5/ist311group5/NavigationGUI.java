@@ -7,17 +7,19 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Label;
 
-public class NavigationGUI{
+public class NavigationGUI extends GUI{
     private GridPane rootPane;  
     private NavigationCntl navCntl;
     private Scene scene;
-    private Text sceneTitle;
     private Text actiontarget;
     private Stage navStage;
     private Label loginText;
@@ -26,18 +28,21 @@ public class NavigationGUI{
         this.navStage = navStage;
         navCntl = cntl;
         setupUI();
+        setupFont();
         setupChatButton();
         setupSettingButton();
         setupBackButton();
     }
     
-    private void setupUI() {
+    public void setupUI() {
         rootPane = new GridPane();
         rootPane.setAlignment(Pos.CENTER);
         rootPane.setHgap(10);
         rootPane.setVgap(10);
         rootPane.setPadding(new Insets(25, 25, 25, 25));
-        
+        sceneTitle = new Text("Navigation");
+      
+        rootPane.add(sceneTitle, 1, 0);
         scene = new Scene(rootPane, 630, 480);
         navStage.setScene(scene);      
         
@@ -51,7 +56,7 @@ public class NavigationGUI{
         chatBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                navCntl.changeControl("Chat");
+                navCntl.changeControl("Connect");
             }
         });
     }
