@@ -11,8 +11,8 @@ public class NavigationCntl{
     } 
     
     public void changeControl(String controller) {
-        if (controller.equals("Chat")) {
-            ChatCntl chatCntl = new ChatCntl(stage);
+        if (controller.equals("Connect")) {
+            ConnectCntl connectCntl = new ConnectCntl(stage);
         } else if (controller.equals("Account Setting")) {
             AccountSettingCntl accountSettingCntl = new AccountSettingCntl(stage);
         } else if (controller.equals("Logout")) {
