@@ -9,6 +9,7 @@ public class ChatClient extends Thread {
     private DataInputStream dataInput;
     private DataOutputStream dataOutput;
   
+    @Override
     public void run() {
         try {
             socket = new Socket("localhost", 5000);
