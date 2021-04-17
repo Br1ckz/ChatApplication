@@ -16,83 +16,51 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.scene.control.TextArea;
 
-public class ChatGUI {
+public class ChatGUI extends GUI{
     private ChatCntl chatCntl;
-    private GridPane rootPane;
-    private Label chatArea;
-    private Scene scene;
-    private Stage chatStage;
-    private Text sceneTitle;
+    private TextArea chatArea;
     private TextField messageBox;
     
-    public ChatGUI(Stage chatStage, ChatCntl chatController) {
-        this.chatStage = chatStage;
+    public ChatGUI(Stage stage, ChatCntl chatController) {
+        this.stage = stage;
         chatCntl = chatController;
-        setupConnectUI();
-        setupConnectButton();
+        setupUI();
+        setupFont();
+        setupSendButton();
         setupBackButton();
     }
  
     /**
      * Sets up the connection UI
      */
-    
-    private void setupConnectUI() {
+    public void setupUI() {
         rootPane = new GridPane();
         scene = new Scene(rootPane, 630, 480);
-        chatStage.setScene(scene);
+        stage.setScene(scene);
         rootPane.setAlignment(Pos.CENTER);
         rootPane.setHgap(10);
         rootPane.setVgap(10);
         rootPane.setPadding(new Insets(25, 25, 25, 25));
 
         sceneTitle = new Text("Chat");
-        Font font = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 15);
-        sceneTitle.setFont(font);
-        rootPane.add(sceneTitle, 0, 0, 2, 5);
+        rootPane.add(sceneTitle, 2, 0);
         
-        chatArea = new Label();
-        rootPane.add(chatArea, 2, 3);
-    }
-    
-    /**
-     * Sets up the chat UI
-     */
-    
-    private void setupChatUI(){
+        chatArea = new TextArea();
+        rootPane.add(chatArea, 2, 1);
+        
         messageBox = new TextField();
-        rootPane.add(messageBox, 2, 7);
+        rootPane.add(messageBox, 2, 3);
+        stage.setScene(scene); 
     }
-    
-    /**
-     * Sets up the connection button
-     */
-    
-    private void setupConnectButton() {
-       Button connectBtn = new Button("Connect to chat server");
-        
-        rootPane.add(connectBtn, 1, 6);
-        connectBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                chatArea.setText("");
-                chatCntl.chat(); 
-                setupSendButton();
-                setupChatUI();
-                connectBtn.setVisible(false);
-            }
-                
-        }); 
-    }
-    
+   
     /**
      * Sets up the send button
      */
-    
     private void setupSendButton() {
         Button sendBtn = new Button("Send");
-        rootPane.add(sendBtn, 3, 7);
+        rootPane.add(sendBtn, 3, 3);
         sendBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -107,7 +75,6 @@ public class ChatGUI {
      * @param type
      * @param message 
      */
-    
     public void updateChat(String type, String message) {
         if (type.equals("Server")) 
             chatArea.setText(chatArea.getText() + "\nServer:You said\"" + message + "\"");
@@ -118,10 +85,9 @@ public class ChatGUI {
     /**
     * Sets up back button
     */
-    
     private void setupBackButton() {
-        Button backButton = new Button("Cancel");
-        rootPane.add(backButton, 1, 8);
+        Button backButton = new Button("Back");
+        rootPane.add(backButton, 1, 3);
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -134,7 +100,6 @@ public class ChatGUI {
      * Gets root pane
      * @return root pane
      */
-    
     public Pane getRootPane() {
         return rootPane;
     }
