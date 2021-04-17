@@ -30,7 +30,8 @@ public class NavigationGUI extends GUI{
         setupUI();
         setupFont();
         setupChatButton();
-        setupSettingButton();
+        setupGeneralSettingButton();
+        setupAccountSettingButton();
         setupBackButton();
     }
     
@@ -61,20 +62,31 @@ public class NavigationGUI extends GUI{
         });
     }
     
-    private void setupSettingButton() {
-        Button settingBtn = new Button("                  Account Settings                  ");
-        rootPane.add(settingBtn, 1, 2);
-        settingBtn.setOnAction(new EventHandler<ActionEvent>() {
+    private void setupGeneralSettingButton() {
+        Button generalSettingButton = new Button("                  General Settings                  ");
+        rootPane.add(generalSettingButton, 1, 2);
+        generalSettingButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override 
+            public void handle(ActionEvent e) {
+                navCntl.changeControl("General Settings");
+            }
+        });
+    }
+    
+    private void setupAccountSettingButton() {
+        Button accountSettingBtn = new Button("                  Account Settings                  ");
+        rootPane.add(accountSettingBtn, 1, 3);
+        accountSettingBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                navCntl.changeControl("Account Setting");
+                navCntl.changeControl("Account Settings");
             }
         });
     }
    
     private void setupBackButton() {
         Button backButton = new Button("                   Exit Application                   ");
-        rootPane.add(backButton, 1, 3);
+        rootPane.add(backButton, 1, 4);
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
