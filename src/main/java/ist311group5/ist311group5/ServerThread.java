@@ -7,6 +7,8 @@ import java.util.ArrayList;
 public class ServerThread implements Runnable{
     private ServerSocket serverSocket;
     private ChatCntl controller;
+    private ChatServer chatServer;
+    private Socket socket;
     public ServerThread (ServerSocket serverSocket, ChatCntl chatController) {
         this.serverSocket = serverSocket;
         controller = chatController;
@@ -16,8 +18,8 @@ public class ServerThread implements Runnable{
         ArrayList<ChatServer> threadList = new ArrayList<>();
         try {
             while (true) {
-                Socket socket = serverSocket.accept();            
-                ChatServer chatServer = new ChatServer(socket, threadList, controller);
+                socket = serverSocket.accept();            
+                chatServer = new ChatServer(socket, threadList, controller);
                 threadList.add(chatServer);
                 chatServer.start();
             }
