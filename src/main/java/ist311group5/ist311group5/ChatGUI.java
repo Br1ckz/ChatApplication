@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.control.TextArea;
+import javafx.application.Platform;
 
 public class ChatGUI extends GUI{
     private ChatCntl chatCntl;
@@ -77,9 +78,9 @@ public class ChatGUI extends GUI{
      */
     public void updateChat(String type, String message) {
         if (type.equals("Server")) 
-            chatArea.setText(chatArea.getText() + "\nServer:You said\"" + message + "\"");
+            Platform.runLater(() -> chatArea.appendText("\nServer:You said\"" + message + "\""));
         else 
-            chatArea.setText(chatArea.getText() + "\nYou: '" + message + "\'");
+            Platform.runLater(() -> chatArea.appendText("\nYou: '" + message + "\'"));
     }
     
     /**
