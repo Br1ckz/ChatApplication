@@ -11,6 +11,7 @@ public class ChatCntl {
     public ChatCntl(Stage stage) {
         this.stage = stage;
         chatUI = new ChatGUI(stage, this);
+        chat();
     }
  
     public void chat() {
@@ -31,10 +32,8 @@ public class ChatCntl {
     }
     
     public void changeControl(String controller) {
-        if (controller.equals("Chat")) {
-//            ChatCntl chatCntl = new ChatCntl(stage);
-        } else if (controller.equals("Back")) {
-            NavigationCntl navCntl = new NavigationCntl(stage);
+        if (controller.equals("Back")) {
+            ConnectCntl navCntl = new ConnectCntl(stage);
         }
     }
 }
