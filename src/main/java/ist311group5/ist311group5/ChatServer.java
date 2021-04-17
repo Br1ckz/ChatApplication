@@ -17,7 +17,6 @@ public class ChatServer extends Thread {
     
     @Override
     public void run() {
-
         try {
             DataInputStream dataInput = new DataInputStream(socket.getInputStream());
             DataOutputStream dataOutput = new DataOutputStream(socket.getOutputStream());
@@ -25,21 +24,15 @@ public class ChatServer extends Thread {
             String recieved = "";
             while (true) {
                 recieved = dataInput.readUTF();
-                showMessage(recieved);
-//                System.out.println("Server: You said \"" + recieved + "\"");        
+                showMessage(recieved); 
             }
-//            dataInput.close();
-//            dataOutput.close();
-//            socket.close();`
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Error encountered while running server.");
-            
+            System.out.println("Error encountered while running server.");      
         }
     }
     
     public void showMessage(String message) {
-        controller.serverResponse(message);
+                controller.serverResponse(message);
     }
-    
 }
