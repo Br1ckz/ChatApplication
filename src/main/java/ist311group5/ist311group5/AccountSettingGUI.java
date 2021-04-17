@@ -17,12 +17,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
-public class AccountSettingGUI {
+public class AccountSettingGUI extends GUI{
     private AccountSettingCntl accountSettingCntl;
     private Stage stage;
     private GridPane rootPane;
     private Scene scene;
-    private Text sceneTitle;
+    private Text changePassword;
     private Label currentPassword;
     private TextField currentPasswordText;
     private Label newPassword;
@@ -34,11 +34,12 @@ public class AccountSettingGUI {
         this.stage = stage;
         this.accountSettingCntl = accountSettingCntl;
         setupUI();
+        setupFont();
         setupBackButton();
         setupSaveButton();
     }
     
-    private void setupUI() {
+    public void setupUI() {
         rootPane = new GridPane();
         scene = new Scene(rootPane, 630, 480);
         stage.setScene(scene);
@@ -47,10 +48,11 @@ public class AccountSettingGUI {
         rootPane.setVgap(10);
         rootPane.setPadding(new Insets(25, 25, 25, 25));
         
-        sceneTitle = new Text("Change Password");
-        Font font = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 15);
-        sceneTitle.setFont(font);
-        rootPane.add(sceneTitle, 0, 0, 1, 1);
+        sceneTitle = new Text("Account Settings");
+        rootPane.add(sceneTitle, 0, 0);
+        
+        changePassword = new Text("Change Password");
+        rootPane.add(changePassword, 0, 1);
         
         currentPassword = new Label("Enter Current Password:");
         rootPane.add(currentPassword, 0, 2);
