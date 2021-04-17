@@ -23,12 +23,11 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
         
-public class LoginGUI {
+public class LoginGUI extends GUI{
     private LoginCntl loginCntl;
     private Stage stage;
     private GridPane grid;
     private Scene scene;
-    private Text sceneTitle;
     private Label userName;
     private TextField userTextField;
     private Label password;
@@ -39,11 +38,12 @@ public class LoginGUI {
         this.loginCntl = loginCntl;
         this.stage = stage;
         setupUI();
+        setupFont();
         setupLoginButton();
         displayUI();
     }
     
-    private void setupUI() {
+    public void setupUI() {
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
@@ -57,9 +57,8 @@ public class LoginGUI {
         stage.setScene(scene);
         
         sceneTitle = new Text("Login");
-        Font font = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 25);
-        sceneTitle.setFont(font);
-        grid.add(sceneTitle, 0, 0, 1, 1);
+
+        grid.add(sceneTitle, 0, 1);
         
         userName = new Label("Username:");
         grid.add(userName, 0, 2);
@@ -79,6 +78,11 @@ public class LoginGUI {
         actiontarget = new Text();
         grid.add(actiontarget, 1, 6);
     } 
+    
+//    public void setupFont() {
+//        titleFont = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, TITLE_TEXT_SIZE);
+//        sceneTitle.setFont(titleFont);
+//    }
     
     private void setupLoginButton() {
         loginBtn.setOnAction(new EventHandler<ActionEvent>() {            
