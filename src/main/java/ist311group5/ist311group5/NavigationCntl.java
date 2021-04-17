@@ -13,7 +13,9 @@ public class NavigationCntl{
     public void changeControl(String controller) {
         if (controller.equals("Connect")) {
             ConnectCntl connectCntl = new ConnectCntl(stage);
-        } else if (controller.equals("Account Setting")) {
+        } else if (controller.equals("General Settings")) {
+            GeneralSettingCntl generalSettingCntl = new GeneralSettingCntl(stage);
+        } else if (controller.equals("Account Settings")) {
             AccountSettingCntl accountSettingCntl = new AccountSettingCntl(stage);
         } else if (controller.equals("Logout")) {
             LoginCntl loginCntl = new LoginCntl(stage);
