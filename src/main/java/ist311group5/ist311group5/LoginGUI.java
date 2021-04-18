@@ -26,7 +26,7 @@ import java.io.FileNotFoundException;
 public class LoginGUI extends GUI{
     private LoginCntl loginCntl;
     private Stage stage;
-    private GridPane grid;
+//    private GridPane ;
     private Scene scene;
     private Label userName;
     private TextField userTextField;
@@ -34,56 +34,60 @@ public class LoginGUI extends GUI{
     private TextField passwordField;
     private Button loginBtn;
     private Text actiontarget;
+    private Button createAccountBtn;
     public LoginGUI(Stage stage, LoginCntl loginCntl) {
         this.loginCntl = loginCntl;
         this.stage = stage;
         setupUI();
         setupFont();
+        setTheme();
         setupLoginButton();
+        setupCreateAccountButton();
         displayUI();
     }
     
+    /**
+     * Sets up login UI.
+     */
     public void setupUI() {
-        grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+        rootPane = new GridPane();
+        rootPane.setAlignment(Pos.CENTER);
+        rootPane.setHgap(10);
+        rootPane.setVgap(10);
+        rootPane.setPadding(new Insets(25, 25, 25, 25));
         
-        scene = new Scene(grid, 630, 480);
-        stage.setScene(scene);      
+        scene = new Scene(rootPane, 630, 480);     
         stage.setTitle("Chat Application");
-        
         stage.setScene(scene);
         
         sceneTitle = new Text("Login");
-
-        grid.add(sceneTitle, 0, 1);
+        rootPane.add(sceneTitle, 0, 1);
         
         userName = new Label("Username:");
-        grid.add(userName, 0, 2);
+        rootPane.add(userName, 0, 2);
         
         userTextField = new TextField();
-        grid.add(userTextField, 1, 2);
+        rootPane.add(userTextField, 1, 2);
        
         password = new Label("Password:");
-        grid.add(password, 0, 3);
+        rootPane.add(password, 0, 3);
         
         passwordField = new TextField();
-        grid.add(passwordField, 1, 3);
+        rootPane.add(passwordField, 1, 3);
         
         loginBtn = new Button("Login");
-        grid.add(loginBtn, 1, 4);
+        rootPane.add(loginBtn, 1, 4);
             
         actiontarget = new Text();
-        grid.add(actiontarget, 1, 6);
+        rootPane.add(actiontarget, 1, 6);
+        
+        createAccountBtn = new Button("Create Account");
+        rootPane.add(createAccountBtn, 2, 4);
     } 
-    
-//    public void setupFont() {
-//        titleFont = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, TITLE_TEXT_SIZE);
-//        sceneTitle.setFont(titleFont);
-//    }
-    
+
+    /**
+     * Sets up login button.
+     */
     private void setupLoginButton() {
         loginBtn.setOnAction(new EventHandler<ActionEvent>() {            
             @Override
@@ -93,9 +97,7 @@ public class LoginGUI extends GUI{
                 boolean loginRes = loginCntl.authenticate(uname, pw);
 
                 if (loginRes) {
-                    actiontarget.setFill(Color.BLUE);
-                    actiontarget.setText("Sign in successful!");
-                    loginCntl.changeControl();
+                    loginCntl.changeControl("Navigation");
                 } else {
                     actiontarget.setFill(Color.FIREBRICK);
                     actiontarget.setText("Sign in failed!");
@@ -104,6 +106,21 @@ public class LoginGUI extends GUI{
         });
     }
     
+    /**
+     * Sets up create account button.
+     */
+    public void setupCreateAccountButton() {
+        createAccountBtn.setOnAction(new EventHandler<ActionEvent>() {            
+            @Override
+            public void handle(ActionEvent e) {
+                loginCntl.changeControl("Create Account");
+            }
+        });
+    }
+    
+    /**
+     * Shows the login UI.
+     */
     private void displayUI() {
         stage.show();
     }
