@@ -12,6 +12,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class GeneralSettingGUI extends GUI {
     private GeneralSettingCntl generalSettingCntl;
@@ -20,6 +25,9 @@ public class GeneralSettingGUI extends GUI {
     private Slider fontSizeSlider;
     private Label colorScheme;
     private CheckBox colorSchemeCheckBox;
+    private Label enterUsernameLabel;
+    private TextField enterUsernameTextField;
+    private Text actiontarget;
 
     public GeneralSettingGUI(Stage stage, GeneralSettingCntl generalSettingCntl) {
         this.stage = stage;
@@ -54,6 +62,15 @@ public class GeneralSettingGUI extends GUI {
         
         colorScheme = new Label("Change Color Scheme");
         rootPane.add(colorScheme, 1, 2);
+        
+        enterUsernameLabel = new Label("Enter Username:");
+        rootPane.add(enterUsernameLabel, 1, 3);
+        
+        enterUsernameTextField = new TextField("Username");
+        rootPane.add(enterUsernameTextField, 2, 3);
+        
+        actiontarget = new Text();
+        rootPane.add(actiontarget, 1, 6);
         
         stage.setScene(scene); 
     }
@@ -95,7 +112,15 @@ public class GeneralSettingGUI extends GUI {
         saveBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-              generalSettingCntl.changeControl("Back");
+                if (!(enterUsernameTextField.getText().equals(""))) {
+                    generalSettingCntl.createGeneralSettingFile(enterUsernameTextField.getText(),
+                       (int) fontSizeSlider.getValue(), getTheme());
+                    generalSettingCntl.changeControl("Back");
+                } else {
+                    actiontarget.setFill(Color.FIREBRICK);
+                    actiontarget.setText("Sign in failed!");
+                }
+                
             }              
         });
     }
@@ -105,11 +130,16 @@ public class GeneralSettingGUI extends GUI {
      * Used to change the size of the font.
      */
     private void setupFontSizeSlider() {
-        fontSizeSlider = new Slider(0, 1, 0.5);
-        fontSizeSlider.setShowTickMarks(true);
+        fontSizeSlider = new Slider(4, 20, 12);
+//        fontSizeSlider.setShowTickMarks(true);
         fontSizeSlider.setShowTickLabels(true);
-        fontSizeSlider.setMajorTickUnit(0.25f);
-        fontSizeSlider.setBlockIncrement(1);
+        fontSizeSlider.setSnapToTicks(true);
+        fontSizeSlider.setMinorTickCount(4);
+        fontSizeSlider.setMajorTickUnit(4);
+        fontSizeSlider.setBlockIncrement(4);
+        fontSizeSlider.valueProperty().addListener((obs, oldVal, newVal) ->
+            fontSizeSlider.setValue(newVal.intValue()));
+
         rootPane.add(fontSizeSlider, 2, 1);
     }
     
