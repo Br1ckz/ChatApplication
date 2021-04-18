@@ -13,10 +13,7 @@ import java.util.Scanner;
 public class AccountFile {
     String filename;
     String creationDate;
-    
-    public AccountFile() {
-    }
-    
+  
     /**
      * Creates account file. 
      * @param username 
