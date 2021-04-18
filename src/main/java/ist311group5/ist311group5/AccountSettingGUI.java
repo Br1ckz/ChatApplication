@@ -76,10 +76,10 @@ public class AccountSettingGUI extends GUI{
         retypeNewPasswordText = new TextField();
         rootPane.add(retypeNewPasswordText, 1, 4);
         
-        Button backButton = new Button("Discard");
+        backButton = new Button("Discard");
         rootPane.add(backButton, 0, 5);
         
-        Button saveButton = new Button("Save");
+        saveButton = new Button("Save");
         rootPane.add(saveButton, 1, 5);
     }
     
