@@ -10,15 +10,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class AccountFile {
+public class AccountFile extends Account{
     String filename;
     String creationDate;
   
+    public AccountFile(String username, String password) {
+        super(username, password);
+    }
+    
     /**
      * Creates account file. 
      * @param username 
      */
-    public static void createFile(String username) {
+    public void createFile(String username) {
         File accountFile = new File(username + ".txt");
         try {
             if (accountFile.createNewFile()) {
@@ -111,4 +115,21 @@ public class AccountFile {
     public String toString() {
         return creationDate + " " + filename;
     }
+    
+    /**
+     * Adds the login to file.
+     * User can then login to their account.
+     */
+    public void addLogin() {
+        String filename = "userList.txt";
+        try {
+            File file = new File(filename);
+            FileWriter accountFile = new FileWriter(file, true);
+            accountFile.write("\n\n" + username + " " + password);
+            accountFile.close();
+        } catch (IOException e){
+            System.out.println("Error finding file.");
+            e.printStackTrace();
+        }
+    }  
 }
