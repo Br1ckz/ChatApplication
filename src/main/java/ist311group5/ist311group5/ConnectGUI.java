@@ -15,9 +15,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class ConnectGUI extends GUI{
     private ConnectCntl connectCntl;
+    private Button connectBtn;
+    private Button backButton;
+    private Label establishConnectionLabel;
+    private TextField establishConnectionTextField;
+    
     public ConnectGUI(Stage stage, ConnectCntl connectCntl) {
         this.stage = stage;
         this.connectCntl = connectCntl;
@@ -42,20 +48,25 @@ public class ConnectGUI extends GUI{
         rootPane.add(sceneTitle, 1, 0);
         scene = new Scene(rootPane, 630, 480);
         stage.setScene(scene);      
+        
+        establishConnectionLabel = new Label("Establish Connection With:");
+        rootPane.add(establishConnectionLabel, 1, 1);
+        
+        establishConnectionTextField = new TextField("Enter IP Address      ");
+        rootPane.add(establishConnectionTextField, 2, 1);
     }
     
       /**
      * Sets up the connection button
      */
     private void setupConnectButton() {
-        Button connectBtn = new Button("       Connect to chat server        ");
-        rootPane.add(connectBtn, 1, 1);
+        connectBtn = new Button("       Send Request        ");
+        rootPane.add(connectBtn, 3, 5);
         connectBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 connectCntl.changeControl("Chat");
-            }
-                
+            }        
         }); 
     }
     
@@ -63,8 +74,8 @@ public class ConnectGUI extends GUI{
     * Sets up back button
     */
     private void setupBackButton() {
-        Button backButton = new Button("                    Back                        ");
-        rootPane.add(backButton, 1, 2);
+        backButton = new Button("                    Cancel                        ");
+        rootPane.add(backButton, 2, 5);
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
