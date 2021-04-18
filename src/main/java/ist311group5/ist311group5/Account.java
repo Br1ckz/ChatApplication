@@ -1,5 +1,9 @@
 package ist311group5.ist311group5;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public abstract class Account {
     String username;
     String password;
@@ -16,6 +20,8 @@ public abstract class Account {
         this.password = password;
     }
      
+    abstract public void createFile(String userName);
+
     /**
      * Updates the username for an account.
      * @param newUsername 
@@ -129,5 +135,21 @@ public abstract class Account {
         return userId + " " + username;
     }
     
-    abstract public void createFile(String userName);
+    
+    /**
+     * Changes contents of account file.
+     * @param filename
+     * @param data 
+     */
+    public static void writeToFile(String filename, String data) {
+        try {
+            File file = new File(filename);
+            FileWriter accountFile = new FileWriter(file);
+            accountFile.write(data);
+            accountFile.close();
+        } catch (IOException e){
+            System.out.println("Error during file creation.");
+            e.printStackTrace();
+        }
+    }
 }

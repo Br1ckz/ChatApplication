@@ -36,22 +36,22 @@ public class AccountFile extends Account{
         }
     }
     
-    /**
-     * Changes contents of account file.
-     * @param filename
-     * @param data 
-     */
-    public static void manipulateFile(String filename, String data) {
-        try {
-            File file = new File(filename);
-            FileWriter accountFile = new FileWriter(file);
-            accountFile.write(data);
-            accountFile.close();
-        } catch (IOException e){
-            System.out.println("Error during file creation.");
-            e.printStackTrace();
-        }
-    }
+//    /**
+//     * Changes contents of account file.
+//     * @param filename
+//     * @param data 
+//     */
+//    public static void manipulateFile(String filename, String data) {
+//        try {
+//            File file = new File(filename);
+//            FileWriter accountFile = new FileWriter(file);
+//            accountFile.write(data);
+//            accountFile.close();
+//        } catch (IOException e){
+//            System.out.println("Error during file creation.");
+//            e.printStackTrace();
+//        }
+//    }
     
     /**
      * Reads from account file.
@@ -68,7 +68,7 @@ public class AccountFile extends Account{
             }
             accountFileReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Read reading file.");
+            System.out.println("Error reading file.");
             e.printStackTrace();
         }
         
