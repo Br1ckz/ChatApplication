@@ -23,6 +23,7 @@ public class ChatGUI extends GUI{
     private ChatCntl chatCntl;
     private TextArea chatArea;
     private TextField messageBox;
+    private Label messageLabel;
     
     public ChatGUI(Stage stage, ChatCntl chatController) {
         this.stage = stage;
@@ -52,8 +53,11 @@ public class ChatGUI extends GUI{
         chatArea = new TextArea();
         rootPane.add(chatArea, 2, 1);
         
+        messageLabel = new Label("Enter message:");
+        rootPane.add(messageLabel, 2, 3);
+        
         messageBox = new TextField();
-        rootPane.add(messageBox, 2, 3);
+        rootPane.add(messageBox, 2, 4);
         stage.setScene(scene); 
     }
    
@@ -62,7 +66,7 @@ public class ChatGUI extends GUI{
      */
     private void setupSendButton() {
         Button sendBtn = new Button("Send");
-        rootPane.add(sendBtn, 3, 3);
+        rootPane.add(sendBtn, 2, 5);
         sendBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -79,17 +83,17 @@ public class ChatGUI extends GUI{
      */
     public void updateChat(String type, String message) {
         if (type.equals("Server")) 
-            Platform.runLater(() -> chatArea.appendText("\nServer:You said\"" + message + "\""));
+            Platform.runLater(() -> chatArea.appendText("\nServer:You said\"" + messageBox.getText() + "\""));
         else 
-            Platform.runLater(() -> chatArea.appendText("\nYou: '" + message + "\'"));
+            Platform.runLater(() -> chatArea.appendText("\nYou: '" + messageBox.getText() + "\'"));
     }
     
     /**
     * Sets up back button
     */
     private void setupBackButton() {
-        Button backButton = new Button("Back");
-        rootPane.add(backButton, 1, 3);
+        Button backButton = new Button("End Connection");
+        rootPane.add(backButton, 2, 6);
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
