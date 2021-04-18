@@ -57,10 +57,10 @@ public class GeneralSettingGUI extends GUI {
         sceneTitle = new Text("General Settings");
         rootPane.add(sceneTitle, 1, 0);
         
-        fontSize = new Label("Change Font Size");
+        fontSize = new Label("Change Font Size:");
         rootPane.add(fontSize, 1, 1);
         
-        colorScheme = new Label("Change Color Scheme");
+        colorScheme = new Label("Change Color Scheme:");
         rootPane.add(colorScheme, 1, 2);
         
         enterUsernameLabel = new Label("Enter Username:");
@@ -80,7 +80,7 @@ public class GeneralSettingGUI extends GUI {
      */
     public void setupDiscardButton() {
         Button discardBtn = new Button("Discard");
-        rootPane.add(discardBtn, 3, 7);
+        rootPane.add(discardBtn, 2, 6);
         discardBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -94,7 +94,7 @@ public class GeneralSettingGUI extends GUI {
      */
     public void setupDefaultButton() {
         Button defaultBtn = new Button("Default");
-        rootPane.add(defaultBtn, 4, 7);
+        rootPane.add(defaultBtn, 2, 7);
         defaultBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -108,7 +108,7 @@ public class GeneralSettingGUI extends GUI {
      */
     public void setupSaveButton() {
         Button saveBtn = new Button("Save");
-        rootPane.add(saveBtn, 5, 7);
+        rootPane.add(saveBtn, 2, 8);
         saveBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
