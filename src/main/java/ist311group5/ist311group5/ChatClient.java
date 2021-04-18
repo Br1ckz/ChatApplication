@@ -10,6 +10,9 @@ public class ChatClient extends Thread {
     private DataOutputStream dataOutput;
     
     @Override
+    /**
+     * Initializes and runs networking components.
+     */
     public void run() {
         try {
             socket = new Socket("localhost", 5000);
@@ -21,6 +24,10 @@ public class ChatClient extends Thread {
         }       
     }
     
+    /**
+     * Sends message to server and resets.
+     * @param message The chat message inputted in the GUI.
+     */
     public void sendMessage(String message) {
         try {
             dataOutput.writeUTF(message);
