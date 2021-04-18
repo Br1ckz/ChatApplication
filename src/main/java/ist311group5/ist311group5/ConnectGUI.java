@@ -23,10 +23,14 @@ public class ConnectGUI extends GUI{
         this.connectCntl = connectCntl;
         setupUI();
         setupFont();
+        setTheme();
         setupConnectButton();
         setupBackButton();
     }
     
+    /**
+     * Sets up the connection UI
+     */
     public void setupUI() {
         rootPane = new GridPane();
         rootPane.setAlignment(Pos.CENTER);
@@ -67,9 +71,5 @@ public class ConnectGUI extends GUI{
                 connectCntl.changeControl("Back");
             }
         });
-    }
-    
-    public Pane getRootPane() {
-        return rootPane;
     }
 }
