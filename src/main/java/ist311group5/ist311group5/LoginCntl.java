@@ -32,6 +32,10 @@ public class LoginCntl {
         loginUI = new LoginGUI(stage, this);
     }
     
+    /**
+     * Looks in local file and checks against saved credentials.
+     * Logs in and navigates to Navigation view when credentials match.
+     */
     public boolean authenticate(String userName, String password) {
         String file = "userList.txt";
         try {
@@ -51,7 +55,14 @@ public class LoginCntl {
         return false;
     }
     
-    public void changeControl() {
-        NavigationCntl navCntl = new NavigationCntl(stage);
+    /**
+     * Changes the controller to the Navigation or Create Account controller.
+     */
+    public void changeControl(String controller) {
+        if (controller.equals("Navigation")){
+            NavigationCntl navCntl = new NavigationCntl(stage);
+        } else if (controller.equals("Create Account")) {
+            CreateAccountCntl createAccountCntl = new CreateAccountCntl(stage);
+        }
     }
 }
