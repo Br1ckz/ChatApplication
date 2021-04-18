@@ -112,6 +112,7 @@ public class CreateAccountGUI extends GUI{
             public void handle(ActionEvent e) {
                 if ((passwordTextField.getText()).equals(retypePasswordTextField.getText())) {
                     createAccountCntl.createAccountFile(usernameTextField.getText(), passwordTextField.getText());
+                    createAccountCntl.createLogin();
                     createAccountCntl.changeControl("Back");
                 } else {
                     actiontarget.setFill(Color.FIREBRICK);

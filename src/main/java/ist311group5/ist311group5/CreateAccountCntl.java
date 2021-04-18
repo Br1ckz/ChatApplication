@@ -30,7 +30,7 @@ public class CreateAccountCntl {
     public void createAccountFile(String username, String password) {
         accountFile = new AccountFile(username, password);
         accountFile.createFile(username);
-        accountFile.manipulateFile(username + ".txt", username + "\n" + password);
+        accountFile.writeToFile(username + ".txt", username + "\n" + password);
     }
 
     /**
