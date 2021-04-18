@@ -1,6 +1,6 @@
 package ist311group5.ist311group5;
 
-public class Account {
+public abstract class Account {
     String username;
     String password;
     int id = 1000;
@@ -124,7 +124,10 @@ public class Account {
      * User id and the username are return
      * @return userId and username
      */
+    @Override
     public String toString() {
         return userId + " " + username;
     }
+    
+    abstract public void createFile(String userName);
 }
