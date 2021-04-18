@@ -8,7 +8,7 @@ public class ChatClient extends Thread {
     private Socket socket;
     private DataInputStream dataInput;
     private DataOutputStream dataOutput;
-  
+    
     @Override
     public void run() {
         try {
@@ -18,7 +18,7 @@ public class ChatClient extends Thread {
         } catch (Exception e) {
             System.out.println("Error creating client.");
             e.printStackTrace();
-        };        
+        }       
     }
     
     public void sendMessage(String message) {
