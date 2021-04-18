@@ -16,25 +16,27 @@ import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Label;
 
-public class NavigationGUI extends GUI{
-    private GridPane rootPane;  
+public class NavigationGUI extends GUI{  
     private NavigationCntl navCntl;
-    private Scene scene;
     private Text actiontarget;
-    private Stage navStage;
-    private Label loginText;
-            
-    public NavigationGUI(Stage navStage, NavigationCntl cntl) {
-        this.navStage = navStage;
+    private Label loginText;   
+    
+    public NavigationGUI(Stage stage, NavigationCntl cntl) {
+        this.stage = stage;
         navCntl = cntl;
         setupUI();
         setupFont();
+        System.out.println(getTheme());
+        setTheme();
         setupChatButton();
         setupGeneralSettingButton();
         setupAccountSettingButton();
         setupBackButton();
     }
     
+    /**
+     * Sets up the navigation UI.
+     */
     public void setupUI() {
         rootPane = new GridPane();
         rootPane.setAlignment(Pos.CENTER);
@@ -45,12 +47,15 @@ public class NavigationGUI extends GUI{
       
         rootPane.add(sceneTitle, 1, 0);
         scene = new Scene(rootPane, 630, 480);
-        navStage.setScene(scene);      
+        stage.setScene(scene);      
         
         actiontarget = new Text();
         rootPane.add(actiontarget, 1, 6);
     }
     
+    /**
+     * Sets up the chat button.
+     */
     private void setupChatButton() {
         Button chatBtn = new Button("                    Start A Chat                        ");
         rootPane.add(chatBtn, 1, 1); 
@@ -62,6 +67,9 @@ public class NavigationGUI extends GUI{
         });
     }
     
+    /**
+     * Sets up the general settings button.
+     */
     private void setupGeneralSettingButton() {
         Button generalSettingButton = new Button("                  General Settings                  ");
         rootPane.add(generalSettingButton, 1, 2);
@@ -73,6 +81,9 @@ public class NavigationGUI extends GUI{
         });
     }
     
+    /**
+     * Sets up the account settings button.
+     */
     private void setupAccountSettingButton() {
         Button accountSettingBtn = new Button("                  Account Settings                  ");
         rootPane.add(accountSettingBtn, 1, 3);
@@ -84,6 +95,9 @@ public class NavigationGUI extends GUI{
         });
     }
    
+    /**
+     * Sets up the back button.
+     */
     private void setupBackButton() {
         Button backButton = new Button("                   Exit Application                   ");
         rootPane.add(backButton, 1, 4);
@@ -93,10 +107,6 @@ public class NavigationGUI extends GUI{
                 navCntl.changeControl("Logout");
             }
         });
-    }
-    
-    public Pane getRootPane() {
-        return rootPane;
     }
 
     /**
