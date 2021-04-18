@@ -35,7 +35,7 @@ public class ChatGUI extends GUI{
     }
  
     /**
-     * Sets up the connection UI
+     * Sets up the chat UI
      */
     public void setupUI() {
         rootPane = new GridPane();
@@ -96,13 +96,5 @@ public class ChatGUI extends GUI{
                 chatCntl.changeControl("Back");
             }
         });
-    }
-    
-    /**
-     * Gets root pane
-     * @return root pane
-     */
-    public Pane getRootPane() {
-        return rootPane;
     }
 }
