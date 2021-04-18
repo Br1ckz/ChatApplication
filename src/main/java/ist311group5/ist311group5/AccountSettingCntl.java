@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 public class AccountSettingCntl {
     private AccountSettingGUI accountSettingUI;
+    private AccountSettingFile accountSettingFile;
     private Stage stage;
     public AccountSettingCntl(Stage stage) {
         this.stage = stage;
@@ -17,5 +18,10 @@ public class AccountSettingCntl {
     
     public void changeControl(String controller) {
         NavigationCntl navCntl = new NavigationCntl(stage);
+    }
+    
+    public void updateAccountFile(String username, String password, String newPassword) {
+        accountSettingFile = new AccountSettingFile(username, password);
+        accountSettingFile.writeToFile(username, newPassword); 
     }
 }
