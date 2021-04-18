@@ -19,9 +19,6 @@ import javafx.scene.text.FontWeight;
 
 public class AccountSettingGUI extends GUI{
     private AccountSettingCntl accountSettingCntl;
-    private Stage stage;
-    private GridPane rootPane;
-    private Scene scene;
     private Text changePassword;
     private Label currentPassword;
     private TextField currentPasswordText;
@@ -29,16 +26,23 @@ public class AccountSettingGUI extends GUI{
     private TextField newPasswordText;
     private Label retypeNewPassword;
     private TextField retypeNewPasswordText;
-            
+    private Button backButton;
+    private Button saveButton;
+    
     public AccountSettingGUI(Stage stage, AccountSettingCntl accountSettingCntl) {
         this.stage = stage;
         this.accountSettingCntl = accountSettingCntl;
         setupUI();
         setupFont();
+        setTheme();
         setupBackButton();
         setupSaveButton();
     }
     
+    /**
+     * Creates root pane and attaches scene.
+     * Adds components to root pane.
+     */
     public void setupUI() {
         rootPane = new GridPane();
         scene = new Scene(rootPane, 630, 480);
@@ -71,11 +75,19 @@ public class AccountSettingGUI extends GUI{
         
         retypeNewPasswordText = new TextField();
         rootPane.add(retypeNewPasswordText, 1, 4);
-    }
-    
-    private void setupBackButton() {
+        
         Button backButton = new Button("Discard");
         rootPane.add(backButton, 0, 5);
+        
+        Button saveButton = new Button("Save");
+        rootPane.add(saveButton, 1, 5);
+    }
+    
+    /**
+     * Creates the action for the Discard button.
+     * Moves back to Navigation scene.
+     */
+    private void setupBackButton() {
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -84,9 +96,12 @@ public class AccountSettingGUI extends GUI{
         });
     }
     
+    /**
+     * Creates the action for the Save button.
+     * Saves account settings to a file.
+     * Moves back to Navigation scene.
+     */
     private void setupSaveButton() {
-        Button saveButton = new Button("Save");
-        rootPane.add(saveButton, 1, 5);
         saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
