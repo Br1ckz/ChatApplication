@@ -63,22 +63,22 @@ public class CreateAccountGUI extends GUI{
         sceneTitle = new Text("Create an Account");
         rootPane.add(sceneTitle, 1, 0);
         
-        username = new Label("Username");
+        username = new Label("Username:");
         rootPane.add(username, 1, 2);
 
-        usernameTextField = new TextField("Enter Username:");
+        usernameTextField = new TextField("Enter Username");
         rootPane.add(usernameTextField, 2, 2);
         
-        password = new Label("Password");
+        password = new Label("Password:");
         rootPane.add(password, 1, 3);
         
-        passwordTextField = new TextField("Enter Password:");
+        passwordTextField = new TextField("Enter Password");
         rootPane.add(passwordTextField, 2, 3);
         
-        retypePassword = new Label("Retype Password");
+        retypePassword = new Label("Retype Password:");
         rootPane.add(retypePassword, 1, 4);
         
-        retypePasswordTextField = new TextField("Retype Password:");
+        retypePasswordTextField = new TextField("Retype Password");
         rootPane.add(retypePasswordTextField, 2, 4);
         
         cancelBtn = new Button("Cancel");
