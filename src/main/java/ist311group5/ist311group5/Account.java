@@ -135,13 +135,7 @@ public abstract class Account {
         return userId + " " + username;
     }
     
-    
-    /**
-     * Changes contents of account file.
-     * @param filename
-     * @param data 
-     */
-    public static void writeToFile(String filename, String data) {
+        public void writeToFile(String filename, String data) {
         try {
             File file = new File(filename);
             FileWriter accountFile = new FileWriter(file);
