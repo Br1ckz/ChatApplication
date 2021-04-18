@@ -26,7 +26,6 @@ public class NavigationGUI extends GUI{
         navCntl = cntl;
         setupUI();
         setupFont();
-        System.out.println(getTheme());
         setTheme();
         setupChatButton();
         setupGeneralSettingButton();
