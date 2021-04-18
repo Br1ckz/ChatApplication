@@ -128,4 +128,3 @@ public class Account {
         return userId + " " + username;
     }
 }
-
