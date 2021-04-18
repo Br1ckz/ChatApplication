@@ -28,6 +28,8 @@ public class AccountSettingGUI extends GUI{
     private TextField retypeNewPasswordText;
     private Button backButton;
     private Button saveButton;
+    private Label usernameLabel;
+    private TextField usernameTextField;
     
     public AccountSettingGUI(Stage stage, AccountSettingCntl accountSettingCntl) {
         this.stage = stage;
@@ -59,28 +61,34 @@ public class AccountSettingGUI extends GUI{
         rootPane.add(changePassword, 0, 1);
         
         currentPassword = new Label("Enter Current Password:");
-        rootPane.add(currentPassword, 0, 2);
+        rootPane.add(currentPassword, 0, 3);
         
         currentPasswordText = new TextField();
-        rootPane.add(currentPasswordText, 1, 2);
+        rootPane.add(currentPasswordText, 1, 3);
         
         newPassword = new Label("Enter New Password:");
-        rootPane.add(newPassword, 0, 3);
+        rootPane.add(newPassword, 0, 4);
         
         newPasswordText = new TextField();
-        rootPane.add(newPasswordText, 1, 3);
+        rootPane.add(newPasswordText, 1, 4);
                 
         retypeNewPassword = new Label("Retype New Password:");
-        rootPane.add(retypeNewPassword, 0, 4);
+        rootPane.add(retypeNewPassword, 0, 5);
         
         retypeNewPasswordText = new TextField();
-        rootPane.add(retypeNewPasswordText, 1, 4);
+        rootPane.add(retypeNewPasswordText, 1, 5);
         
         backButton = new Button("Discard");
-        rootPane.add(backButton, 0, 5);
+        rootPane.add(backButton, 0, 6);
         
         saveButton = new Button("Save");
-        rootPane.add(saveButton, 1, 5);
+        rootPane.add(saveButton, 1, 6);
+        
+        usernameLabel = new Label("Enter Username:"); 
+        rootPane.add(usernameLabel, 0, 2);
+        
+        usernameTextField = new TextField();
+        rootPane.add(usernameTextField, 1, 2);
     }
     
     /**
@@ -105,6 +113,8 @@ public class AccountSettingGUI extends GUI{
         saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                accountSettingCntl.updateAccountFile(usernameTextField.getText(),
+                    currentPasswordText.getText(), newPasswordText.getText());
                 accountSettingCntl.changeControl("Save");
             }
         });
