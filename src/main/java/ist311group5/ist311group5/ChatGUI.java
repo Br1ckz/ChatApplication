@@ -29,6 +29,7 @@ public class ChatGUI extends GUI{
         chatCntl = chatController;
         setupUI();
         setupFont();
+        setTheme();
         setupSendButton();
         setupBackButton();
     }
