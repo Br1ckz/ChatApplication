@@ -82,10 +82,10 @@ public class CreateAccountGUI extends GUI{
         rootPane.add(retypePasswordTextField, 2, 4);
         
         cancelBtn = new Button("Cancel");
-        rootPane.add(cancelBtn, 2, 5);
+        rootPane.add(cancelBtn, 1, 5);
         
         createAccountBtn = new Button("Create Account");
-        rootPane.add(createAccountBtn, 3, 5);
+        rootPane.add(createAccountBtn, 2, 5);
         
         actiontarget = new Text();
         rootPane.add(actiontarget, 1, 6);

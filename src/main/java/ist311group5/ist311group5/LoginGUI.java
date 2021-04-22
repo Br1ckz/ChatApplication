@@ -66,13 +66,13 @@ public class LoginGUI extends GUI{
         userName = new Label("Username:");
         rootPane.add(userName, 0, 2);
         
-        userTextField = new TextField();
+        userTextField = new TextField("Enter Username");
         rootPane.add(userTextField, 1, 2);
        
         password = new Label("Password:");
         rootPane.add(password, 0, 3);
         
-        passwordField = new TextField();
+        passwordField = new TextField("Enter Password");
         rootPane.add(passwordField, 1, 3);
         
         loginBtn = new Button("Login");
@@ -82,7 +82,7 @@ public class LoginGUI extends GUI{
         rootPane.add(actiontarget, 1, 6);
         
         createAccountBtn = new Button("Create Account");
-        rootPane.add(createAccountBtn, 2, 4);
+        rootPane.add(createAccountBtn, 0, 4);
     } 
 
     /**
