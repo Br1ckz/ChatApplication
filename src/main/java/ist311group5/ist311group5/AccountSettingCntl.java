@@ -7,21 +7,32 @@ package ist311group5.ist311group5;
 
 import javafx.stage.Stage;
 
-public class AccountSettingCntl {
+public class AccountSettingCntl implements Controller{
     private AccountSettingGUI accountSettingUI;
     private AccountSettingFile accountSettingFile;
     private Stage stage;
-    public AccountSettingCntl(Stage stage) {
+    private GeneralSettingFile generalSettingFile;
+    public AccountSettingCntl(Stage stage, GeneralSettingFile generalSettingFile) {
         this.stage = stage;
+        this.generalSettingFile = generalSettingFile;
         accountSettingUI = new AccountSettingGUI(stage, this);
     }
     
     public void changeControl(String controller) {
-        NavigationCntl navCntl = new NavigationCntl(stage);
+        NavigationCntl navCntl = new NavigationCntl(stage, generalSettingFile);
     }
     
     public void updateAccountFile(String username, String password, String newPassword) {
         accountSettingFile = new AccountSettingFile(username, password);
         accountSettingFile.writeToFile(username, newPassword); 
+    }
+    
+    public String[] getGeneralSetting() {
+        String username = generalSettingFile.getUsername();
+        return generalSettingFile.readFile(username);
+    }
+
+    public int getFont() {
+        return generalSettingFile.getFontSize();
     }
 }

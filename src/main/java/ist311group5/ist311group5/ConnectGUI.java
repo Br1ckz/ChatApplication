@@ -28,7 +28,8 @@ public class ConnectGUI extends GUI{
         this.stage = stage;
         this.connectCntl = connectCntl;
         setupUI();
-        setupFont();
+        setupTitleFont();
+//        setupBodyFont();
         setTheme();
         setupConnectButton();
         setupBackButton();
@@ -50,6 +51,7 @@ public class ConnectGUI extends GUI{
         stage.setScene(scene);      
         
         establishConnectionLabel = new Label("Establish Connection With:");
+        establishConnectionLabel.setFont(new Font(setFont()));
         rootPane.add(establishConnectionLabel, 1, 1);
         
         establishConnectionTextField = new TextField("Enter IP Address      ");
@@ -82,5 +84,19 @@ public class ConnectGUI extends GUI{
                 connectCntl.changeControl("Back");
             }
         });
+    }
+    
+    public void setTheme() {
+        String[] data = connectCntl.getGeneralSetting(); 
+        String theme = data[1];
+        if (theme.equals("Dark")) {
+            setDarkTheme();
+        } else {
+            setLightTheme();
+        }
+    }
+    
+    public int setFont() {
+        return connectCntl.getFont();
     }
 }

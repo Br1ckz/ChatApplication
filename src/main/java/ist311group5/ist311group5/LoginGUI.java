@@ -26,7 +26,6 @@ import java.io.FileNotFoundException;
 public class LoginGUI extends GUI{
     private LoginCntl loginCntl;
     private Stage stage;
-//    private GridPane ;
     private Scene scene;
     private Label userName;
     private TextField userTextField;
@@ -39,7 +38,8 @@ public class LoginGUI extends GUI{
         this.loginCntl = loginCntl;
         this.stage = stage;
         setupUI();
-        setupFont();
+        setupTitleFont();
+//        setupBodyFont();
         setTheme();
         setupLoginButton();
         setupCreateAccountButton();
@@ -64,6 +64,7 @@ public class LoginGUI extends GUI{
         rootPane.add(sceneTitle, 0, 1);
         
         userName = new Label("Username:");
+//        userName.setFont(new Font(getBodyTextSize()));
         rootPane.add(userName, 0, 2);
         
         userTextField = new TextField("Enter Username");
@@ -116,6 +117,16 @@ public class LoginGUI extends GUI{
                 loginCntl.changeControl("Create Account");
             }
         });
+    }
+    
+    public void setTheme() {
+//        String[] data = loginCntl.getGeneralSetting(); 
+//        String theme = data[1];
+//        if (theme.equals("Dark")) {
+//            setDarkTheme();
+//        } else {
+            setLightTheme();
+//        }
     }
     
     /**

@@ -2,13 +2,14 @@ package ist311group5.ist311group5;
 
 import javafx.stage.Stage;
 
-public class CreateAccountCntl {
+public class CreateAccountCntl implements Controller {
     private CreateAccountGUI createAccountUI;
     private Stage stage;
     private AccountFile accountFile;
-    
-    public CreateAccountCntl(Stage stage) {
+    private GeneralSettingFile generalSettingFile;
+    public CreateAccountCntl(Stage stage, GeneralSettingFile generalSettingFile) {
         this.stage = stage;
+        this.generalSettingFile = generalSettingFile;
         createAccountUI = new CreateAccountGUI(stage, this);
     }
     
@@ -38,5 +39,11 @@ public class CreateAccountCntl {
      */
     public void createLogin() {
         accountFile.addLogin(); 
+    }
+    
+    public String[] getGeneralSetting() {
+//        String username = generalSettingFile.getUsername();
+        String[] data = generalSettingFile.readFile();
+        return data;
     }
 }

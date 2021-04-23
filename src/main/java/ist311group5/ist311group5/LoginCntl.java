@@ -24,9 +24,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
         
 
-public class LoginCntl {
+public class LoginCntl implements Controller{
     private LoginGUI loginUI;
     private Stage stage;
+    private GeneralSettingFile generalSettingFile;
     public LoginCntl(Stage stage) {
         this.stage = stage;
         loginUI = new LoginGUI(stage, this);
@@ -44,6 +45,8 @@ public class LoginCntl {
             while(reader.hasNextLine()) {
                 String[] line = reader.nextLine().split(" ");
                 if (line[0].equals(userName) && line[1].equals(password)) {
+                    generalSettingFile = new GeneralSettingFile(userName, password);
+                    getGeneralSetting();
                     return true;
                 }
             }
@@ -60,9 +63,14 @@ public class LoginCntl {
      */
     public void changeControl(String controller) {
         if (controller.equals("Navigation")){
-            NavigationCntl navCntl = new NavigationCntl(stage);
+            NavigationCntl navCntl = new NavigationCntl(stage, generalSettingFile);
         } else if (controller.equals("Create Account")) {
-            CreateAccountCntl createAccountCntl = new CreateAccountCntl(stage);
+            CreateAccountCntl createAccountCntl = new CreateAccountCntl(stage, generalSettingFile);
         }
+    }
+    
+    public String[] getGeneralSetting() {
+//        String username = generalSettingFile.getUsername();
+        return generalSettingFile.readFile();
     }
 }

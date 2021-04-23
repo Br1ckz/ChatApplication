@@ -25,7 +25,8 @@ public class NavigationGUI extends GUI{
         this.stage = stage;
         navCntl = cntl;
         setupUI();
-        setupFont();
+        setupTitleFont();
+//        setupBodyFont();
         setTheme();
         setupChatButton();
         setupGeneralSettingButton();
@@ -120,5 +121,15 @@ public class NavigationGUI extends GUI{
      */
     public void setLoginText(Label loginText) {
         this.loginText = loginText;
+    }
+    
+    public void setTheme() {
+        String data[] = navCntl.getGeneralSetting(); 
+        String theme = data[1];
+        if (theme.equals("Dark")) {
+            setDarkTheme();
+        } else {
+            setLightTheme();
+        }
     }
 }

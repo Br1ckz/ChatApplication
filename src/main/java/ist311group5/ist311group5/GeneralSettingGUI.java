@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.Font;
 
 public class GeneralSettingGUI extends GUI {
     private GeneralSettingCntl generalSettingCntl;
@@ -33,7 +34,8 @@ public class GeneralSettingGUI extends GUI {
         this.stage = stage;
         this.generalSettingCntl = generalSettingCntl;
         setupUI();
-        setupFont();
+        setupTitleFont();
+//        setupBodyFont();
         setTheme();
         setupDiscardButton();
         setupDefaultButton();
@@ -58,12 +60,15 @@ public class GeneralSettingGUI extends GUI {
         rootPane.add(sceneTitle, 1, 0);
         
         fontSize = new Label("Change Font Size:");
+        fontSize.setFont(new Font(setFont()));
         rootPane.add(fontSize, 1, 1);
         
         colorScheme = new Label("Change Color Scheme:");
+        colorScheme.setFont(new Font(setFont()));
         rootPane.add(colorScheme, 1, 2);
         
         enterUsernameLabel = new Label("Enter Username:");
+        enterUsernameLabel.setFont(new Font(setFont()));
         rootPane.add(enterUsernameLabel, 1, 3);
         
         enterUsernameTextField = new TextField("Username");
@@ -112,15 +117,15 @@ public class GeneralSettingGUI extends GUI {
         saveBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                int userTextSize = (int) fontSizeSlider.getValue();
                 if (!(enterUsernameTextField.getText().equals(""))) {
                     generalSettingCntl.createGeneralSettingFile(enterUsernameTextField.getText(),
-                       (int) fontSizeSlider.getValue(), getTheme());
+                       userTextSize, getTheme());
                     generalSettingCntl.changeControl("Back");
                 } else {
                     actiontarget.setFill(Color.FIREBRICK);
                     actiontarget.setText("Sign in failed!");
-                }
-                
+                }     
             }              
         });
     }
@@ -154,11 +159,25 @@ public class GeneralSettingGUI extends GUI {
         colorSchemeCheckBox.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
             if (isSelected) {
                 isDarkTheme = true;
-                setTheme();
+                setDarkTheme();
             } else {
                 isDarkTheme = false;
-                setTheme();
+                setLightTheme();
             }
         });
+    }
+    
+    public void setTheme() {
+        String[] data = generalSettingCntl.getGeneralSetting(); 
+        String theme = data[1];
+        if (theme.equals("Dark")) {
+            setDarkTheme();
+        } else {
+            setLightTheme();
+        }
+    }
+    
+    public int setFont() {
+        return generalSettingCntl.getFont();
     }
 }

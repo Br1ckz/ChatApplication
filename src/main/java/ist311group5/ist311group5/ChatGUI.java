@@ -23,13 +23,12 @@ public class ChatGUI extends GUI{
     private ChatCntl chatCntl;
     private TextArea chatArea;
     private TextField messageBox;
-    private Label messageLabel;
-    
+
     public ChatGUI(Stage stage, ChatCntl chatController) {
         this.stage = stage;
         chatCntl = chatController;
         setupUI();
-        setupFont();
+        setupTitleFont();
         setTheme();
         setupSendButton();
         setupBackButton();
@@ -52,10 +51,7 @@ public class ChatGUI extends GUI{
         
         chatArea = new TextArea();
         rootPane.add(chatArea, 2, 1);
-        
-        messageLabel = new Label("Enter message:");
-        rootPane.add(messageLabel, 2, 3);
-        
+
         messageBox = new TextField();
         rootPane.add(messageBox, 2, 4);
         stage.setScene(scene); 
@@ -100,5 +96,15 @@ public class ChatGUI extends GUI{
                 chatCntl.changeControl("Back");
             }
         });
+    }
+    
+    public void setTheme() {
+        String[] data = chatCntl.getGeneralSetting(); 
+        String theme = data[1];
+        if (theme.equals("Dark")) {
+            setDarkTheme();
+        } else {
+            setLightTheme();
+        }
     }
 }

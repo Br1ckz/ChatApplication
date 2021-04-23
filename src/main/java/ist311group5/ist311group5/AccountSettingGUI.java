@@ -35,7 +35,8 @@ public class AccountSettingGUI extends GUI{
         this.stage = stage;
         this.accountSettingCntl = accountSettingCntl;
         setupUI();
-        setupFont();
+        setupTitleFont();
+//        setupBodyFont();
         setTheme();
         setupBackButton();
         setupSaveButton();
@@ -61,18 +62,21 @@ public class AccountSettingGUI extends GUI{
         rootPane.add(changePassword, 0, 1);
         
         currentPassword = new Label("Enter Current Password:");
+        currentPassword.setFont(new Font(setFont()));
         rootPane.add(currentPassword, 0, 3);
         
         currentPasswordText = new TextField();
         rootPane.add(currentPasswordText, 1, 3);
         
         newPassword = new Label("Enter New Password:");
+        newPassword.setFont(new Font(setFont()));
         rootPane.add(newPassword, 0, 4);
         
         newPasswordText = new TextField();
         rootPane.add(newPasswordText, 1, 4);
                 
         retypeNewPassword = new Label("Retype New Password:");
+        retypeNewPassword.setFont(new Font(setFont()));
         rootPane.add(retypeNewPassword, 0, 5);
         
         retypeNewPasswordText = new TextField();
@@ -85,6 +89,7 @@ public class AccountSettingGUI extends GUI{
         rootPane.add(saveButton, 1, 6);
         
         usernameLabel = new Label("Enter Username:"); 
+        usernameLabel.setFont(new Font(setFont()));
         rootPane.add(usernameLabel, 0, 2);
         
         usernameTextField = new TextField();
@@ -202,5 +207,19 @@ public class AccountSettingGUI extends GUI{
      */
     public void setRetypeNewPasswordText(TextField retypeNewPasswordText) {
         this.retypeNewPasswordText = retypeNewPasswordText;
+    }
+    
+    public void setTheme() {
+        String[] data = accountSettingCntl.getGeneralSetting(); 
+        String theme = data[1];
+        if (theme.equals("Dark")) {
+            setDarkTheme();
+        } else {
+            setLightTheme();
+        }
+    }
+    
+    public int setFont() {
+        return accountSettingCntl.getFont();
     }
 }
