@@ -18,11 +18,12 @@ public abstract class GUI {
     boolean isDarkTheme;
     
     abstract public void setupUI();
+    abstract public void setTheme();
     
     /**
      * Sets up the font for the title.
      */
-    public void setupFont() {
+    public void setupTitleFont() {
         titleFont = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, TITLE_TEXT_SIZE);
         sceneTitle.setFont(titleFont);
     }
@@ -37,12 +38,12 @@ public abstract class GUI {
     /**
      * Determines the theme to use when rendering views.
      */
-    public void setTheme() {
-        if (isDarkTheme) {
-            rootPane.getStylesheets().setAll(getClass().getResource("dark-theme.css").toExternalForm());
-        } else {
-            rootPane.getStylesheets().setAll(getClass().getResource("caspian.css").toExternalForm());
-        } 
+    public void setLightTheme() {
+        rootPane.getStylesheets().setAll(getClass().getResource("caspian.css").toExternalForm());
+    }
+    
+    public void setDarkTheme() {
+        rootPane.getStylesheets().setAll(getClass().getResource("dark-theme.css").toExternalForm());
     }
     
     /**
