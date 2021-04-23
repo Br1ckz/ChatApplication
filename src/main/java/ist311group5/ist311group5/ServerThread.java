@@ -16,12 +16,15 @@ public class ServerThread implements Runnable{
     
     public void run() {
         ArrayList<ChatServer> threadList = new ArrayList<>();
+        ArrayList<Socket> socketList = new ArrayList<>();
         try {
             while (true) {
                 socket = serverSocket.accept();            
-                chatServer = new ChatServer(socket, threadList, controller);
+                socketList.add(socket);
+                chatServer = new ChatServer(socket, threadList, controller, socketList);
                 threadList.add(chatServer);
                 chatServer.start();
+                System.out.println("Accepted new user at " + socket);
             }
         } catch (Exception e) {e.printStackTrace();}
     }

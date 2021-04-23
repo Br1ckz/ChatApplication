@@ -8,6 +8,10 @@ public class ChatClient extends Thread {
     private Socket socket;
     private DataInputStream dataInput;
     private DataOutputStream dataOutput;
+    private ChatCntl chatCntl;
+    public ChatClient(ChatCntl chatCntl)  {
+        this.chatCntl = chatCntl;
+    }
     
     @Override
     /**
@@ -15,9 +19,13 @@ public class ChatClient extends Thread {
      */
     public void run() {
         try {
-            socket = new Socket("localhost", 5000);
+            socket = new Socket("localhost", 6000);
             dataInput = new DataInputStream(socket.getInputStream());
             dataOutput = new DataOutputStream(socket.getOutputStream());
+            while (true) {
+                String data = dataInput.readUTF();
+                receiveMessage(data);
+            }
         } catch (Exception e) {
             System.out.println("Error creating client.");
             e.printStackTrace();
@@ -33,5 +41,9 @@ public class ChatClient extends Thread {
             dataOutput.writeUTF(message);
             dataOutput.flush();
         } catch (Exception e) { e.printStackTrace();}
+    }
+    
+    public void receiveMessage(String message) {
+        chatCntl.serverResponse(message);
     }
 }

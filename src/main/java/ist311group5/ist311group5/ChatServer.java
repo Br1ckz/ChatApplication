@@ -9,10 +9,12 @@ public class ChatServer extends Thread {
     private Socket socket;
     private ArrayList<ChatServer> threadList;
     private ChatCntl controller;
-    public ChatServer(Socket socket, ArrayList<ChatServer> threads, ChatCntl chatController) {
+    private ArrayList<Socket> socketList;
+    public ChatServer(Socket socket, ArrayList<ChatServer> threads, ChatCntl chatController, ArrayList<Socket> socketList) {
         this.socket = socket;
         this.threadList = threads;
         controller = chatController;
+        this.socketList = socketList;
     }
     
     @Override
@@ -22,9 +24,17 @@ public class ChatServer extends Thread {
             DataOutputStream dataOutput = new DataOutputStream(socket.getOutputStream());
 
             String recieved = "";
-            while (true) {
+            while (true) { 
                 recieved = dataInput.readUTF();
-                showMessage(recieved); 
+                for (Socket otherSocket : socketList) {
+                    if (otherSocket.getPort() != this.socket.getPort()) {
+                        System.out.println(otherSocket);
+                        dataOutput = new DataOutputStream(otherSocket.getOutputStream());
+                        dataOutput.writeUTF(recieved);
+                        dataOutput.flush();
+                    }
+                }
+//                showMessage(recieved); 
             }
         } catch (Exception e) {
             e.printStackTrace();

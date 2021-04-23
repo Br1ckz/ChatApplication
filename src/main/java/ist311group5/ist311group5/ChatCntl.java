@@ -19,10 +19,17 @@ public class ChatCntl implements Controller {
     public void chat() {
          try {
             System.out.println("Starting chat");
-            ServerSocket serverSocket = new ServerSocket(5000);
+            ServerSocket serverSocket = new ServerSocket(6000);
             new Thread(serverThread = new ServerThread(serverSocket, this)).start();
-            new Thread(client = new ChatClient()).start();
-        } catch (Exception e) {};
+        } catch (Exception e) {
+            System.out.println("Error creating server");
+        };
+        
+        try {
+            new Thread(client = new ChatClient(this)).start();  
+        } catch (Exception e) {
+            System.out.println("Error creating client");
+        };
     }
     
     public void chatInput(String message) {

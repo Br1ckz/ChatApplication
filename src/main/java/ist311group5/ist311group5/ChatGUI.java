@@ -79,9 +79,9 @@ public class ChatGUI extends GUI{
      */
     public void updateChat(String type, String message) {
         if (type.equals("Server")) 
-            Platform.runLater(() -> chatArea.appendText("\nServer:You said\"" + messageBox.getText() + "\""));
+            Platform.runLater(() -> chatArea.appendText("\nResponse: " + message));
         else 
-            Platform.runLater(() -> chatArea.appendText("\nYou: '" + messageBox.getText() + "\'"));
+            Platform.runLater(() -> chatArea.appendText("\nYou: " + messageBox.getText()));
     }
     
     /**
