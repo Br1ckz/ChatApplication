@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
 public class NavigationGUI extends GUI{  
     private NavigationCntl navCntl;
     private Text actiontarget;  
-    
+    private Label loginText;
     public NavigationGUI(Stage stage, NavigationCntl cntl) {
         this.stage = stage;
         navCntl = cntl;
