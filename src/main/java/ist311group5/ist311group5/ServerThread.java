@@ -9,11 +9,16 @@ public class ServerThread implements Runnable{
     private ChatCntl controller;
     private ChatServer chatServer;
     private Socket socket;
+    
     public ServerThread (ServerSocket serverSocket, ChatCntl chatController) {
         this.serverSocket = serverSocket;
         controller = chatController;
     }
     
+    /**
+     * Creates a new chat server.
+     * Manages client connections with threads and sockets.
+     */
     public void run() {
         ArrayList<ChatServer> threadList = new ArrayList<>();
         ArrayList<Socket> socketList = new ArrayList<>();

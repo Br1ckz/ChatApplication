@@ -38,7 +38,6 @@ public class CreateAccountGUI extends GUI{
         this.createAccountCntl = createAccountCntl;
         setupUI();
         setupTitleFont();
-//        setupBodyFont();
         setTheme();
         setupCancelButton();
         setupCreateAccountButton();
@@ -123,13 +122,10 @@ public class CreateAccountGUI extends GUI{
         });
     } 
     
+    /**
+     * Sets the theme for the create account UI.
+     */
     public void setTheme() {
-//        String[] data = createAccountCntl.getGeneralSetting(); 
-//        String theme = data[1];
-//        if (theme.equals("Dark")) {
-//            setDarkTheme();
-//        } else {
             setLightTheme();
-//        }
     }
 }

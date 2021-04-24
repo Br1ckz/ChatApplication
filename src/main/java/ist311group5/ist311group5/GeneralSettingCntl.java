@@ -19,6 +19,10 @@ public class GeneralSettingCntl implements Controller {
         generalSettingUI = new GeneralSettingGUI(stage, this);
     }
     
+    /**
+     * Changes the controller to the navigation controller
+     * @Param controller
+     */
     public void changeControl(String controller) {
         if (controller.equals("Back")) {
             NavigationCntl navCntl = new NavigationCntl(stage, generalSettingFile);
@@ -28,11 +32,13 @@ public class GeneralSettingCntl implements Controller {
     public void createGeneralSettingFile(String username, int fontSize, boolean isDark) {
         ArrayList data = new ArrayList<String>();
         data = getAccountFile(username + ".txt");
-//        generalSettingFile = new GeneralSettingFile((String)data.get(0), (String) data.get(1));
         generalSettingFile.createFile(username);
         generalSettingFile.manipulateFile(username + "GeneralSettings.txt", fontSize, isDark);
     }
     
+    /**
+     * Retrieves data from the account file.
+     */
     public ArrayList getAccountFile(String filename) {
         ArrayList credentials = new ArrayList<String>();
         try {
@@ -50,11 +56,17 @@ public class GeneralSettingCntl implements Controller {
         return credentials;
     }
     
+    /**
+     * Retrieves the general settings.
+     */
     public String[] getGeneralSetting() {
         String username = generalSettingFile.getUsername();
         return generalSettingFile.readFile(username);
     }
     
+    /**
+     * Gets the font size.
+     */
     public int getFont() {
         return generalSettingFile.getFontSize();
     }

@@ -135,6 +135,11 @@ public abstract class Account {
         return userId + " " + username;
     }
     
+    /**
+     * Used to write to a file
+     * @param filename name of the file and extension
+     * @param data the data that will be written to the file
+     */
     public void writeToFile(String filename, String data) {
         try {
             File file = new File(filename);

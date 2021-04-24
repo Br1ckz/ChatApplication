@@ -18,15 +18,13 @@ import javafx.scene.control.Label;
 
 public class NavigationGUI extends GUI{  
     private NavigationCntl navCntl;
-    private Text actiontarget;
-    private Label loginText;   
+    private Text actiontarget;  
     
     public NavigationGUI(Stage stage, NavigationCntl cntl) {
         this.stage = stage;
         navCntl = cntl;
         setupUI();
         setupTitleFont();
-//        setupBodyFont();
         setTheme();
         setupChatButton();
         setupGeneralSettingButton();
@@ -110,19 +108,8 @@ public class NavigationGUI extends GUI{
     }
 
     /**
-     * @return the loginText
+     * Sets the theme.
      */
-    public Label getLoginText() {
-        return loginText;
-    }
-
-    /**
-     * @param loginText the loginText to set
-     */
-    public void setLoginText(Label loginText) {
-        this.loginText = loginText;
-    }
-    
     public void setTheme() {
         String data[] = navCntl.getGeneralSetting(); 
         String theme = data[1];

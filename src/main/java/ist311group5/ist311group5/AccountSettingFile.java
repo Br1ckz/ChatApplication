@@ -11,7 +11,17 @@ public class AccountSettingFile extends Account{
     }
     
     public void createFile(String username) {
-     
+        File accountFile = new File(username + ".txt");
+        try {
+            if (accountFile.createNewFile()) {
+                System.out.println("Created: " + accountFile.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error occured");
+            e.printStackTrace();
+        }
     }
     
         /**

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ist311group5.ist311group5;
 
 import javafx.stage.Stage;
@@ -18,20 +13,33 @@ public class AccountSettingCntl implements Controller{
         accountSettingUI = new AccountSettingGUI(stage, this);
     }
     
+    /**
+     * Changes the controls to another controller 
+     */
     public void changeControl(String controller) {
         NavigationCntl navCntl = new NavigationCntl(stage, generalSettingFile);
     }
     
+    /**
+     * Connects to the account setting file class.
+     * Writes to account setting file.
+     */
     public void updateAccountFile(String username, String password, String newPassword) {
         accountSettingFile = new AccountSettingFile(username, password);
         accountSettingFile.writeToFile(username, newPassword); 
     }
     
+    /**
+     * Retrieves the general settings.
+     */
     public String[] getGeneralSetting() {
         String username = generalSettingFile.getUsername();
         return generalSettingFile.readFile(username);
     }
 
+    /**
+     * Gets the font size.
+     */
     public int getFont() {
         return generalSettingFile.getFontSize();
     }

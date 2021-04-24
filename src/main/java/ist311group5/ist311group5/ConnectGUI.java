@@ -22,14 +22,12 @@ public class ConnectGUI extends GUI{
     private Button connectBtn;
     private Button backButton;
     private Label establishConnectionLabel;
-    private TextField establishConnectionTextField;
     
     public ConnectGUI(Stage stage, ConnectCntl connectCntl) {
         this.stage = stage;
         this.connectCntl = connectCntl;
         setupUI();
         setupTitleFont();
-//        setupBodyFont();
         setTheme();
         setupConnectButton();
         setupBackButton();
@@ -50,12 +48,9 @@ public class ConnectGUI extends GUI{
         scene = new Scene(rootPane, 630, 480);
         stage.setScene(scene);      
         
-        establishConnectionLabel = new Label("Establish Connection With:");
+        establishConnectionLabel = new Label("Establish Connection With other chat clients");
         establishConnectionLabel.setFont(new Font(setFont()));
         rootPane.add(establishConnectionLabel, 1, 1);
-        
-        establishConnectionTextField = new TextField("Enter IP Address      ");
-        rootPane.add(establishConnectionTextField, 2, 1);
     }
     
       /**
@@ -63,7 +58,7 @@ public class ConnectGUI extends GUI{
      */
     private void setupConnectButton() {
         connectBtn = new Button("       Send Request        ");
-        rootPane.add(connectBtn, 3, 5);
+        rootPane.add(connectBtn, 2, 5);
         connectBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -77,7 +72,7 @@ public class ConnectGUI extends GUI{
     */
     private void setupBackButton() {
         backButton = new Button("                    Cancel                        ");
-        rootPane.add(backButton, 2, 5);
+        rootPane.add(backButton, 1, 5);
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -86,6 +81,9 @@ public class ConnectGUI extends GUI{
         });
     }
     
+    /**
+     * Sets the theme for the connection UI
+     */
     public void setTheme() {
         String[] data = connectCntl.getGeneralSetting(); 
         String theme = data[1];
@@ -96,6 +94,9 @@ public class ConnectGUI extends GUI{
         }
     }
     
+    /**
+     * Gets the font size.
+     */
     public int setFont() {
         return connectCntl.getFont();
     }

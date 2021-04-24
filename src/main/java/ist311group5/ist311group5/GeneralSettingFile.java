@@ -18,7 +18,10 @@ public class GeneralSettingFile extends Account{
     public GeneralSettingFile(String username, String password) {
         super(username, password);
     }
-    
+    /**
+     * Create the general settings file for the user
+     * @param username The username used to login
+     */
     public void createFile(String username) {
         File accountFile = new File(username + "GeneralSettings.txt");
         try {
@@ -37,6 +40,12 @@ public class GeneralSettingFile extends Account{
         }
     }
     
+    /**
+     * Changes the general settings file.
+     * @param filename The name of file including extension
+     * @param textSize The size of the text
+     * @param isDark If the theme is dark or not 
+     */
     public void manipulateFile(String filename, int textSize, boolean isDark) {
         try {
             List<String> lines = new ArrayList<String>();
@@ -73,6 +82,10 @@ public class GeneralSettingFile extends Account{
         }
     }
     
+    /**
+     * Reads and returns data from the default general settings file
+     * @return lines font size and theme
+     */
     public String[] readFile() {
         String file = "DefaultGeneralSettings.txt";
         String[] lines = new String[4];
@@ -83,8 +96,6 @@ public class GeneralSettingFile extends Account{
             while(reader.hasNextLine()) {
                 line = reader.nextLine();
                 lines  = line.split(" ");
-                
-//                String category = line.split(" ");
             }
             reader.close();
         } catch (FileNotFoundException e) {
@@ -93,12 +104,15 @@ public class GeneralSettingFile extends Account{
         return lines;
     }
     
+    /**
+     * Reads the user created general settings fie
+     * @param username The username used to login
+     * @return lines font size and theme
+     */
     public String[] readFile(String username) {
         String file = username + "GeneralSettings.txt";
         String[] lines = new String[2];
         String line;
-//        List lines = new ArrayList<String>();
-        
         try {
             File accountFile = new File(file);
             Scanner reader = new Scanner(accountFile);
@@ -121,18 +135,34 @@ public class GeneralSettingFile extends Account{
         return lines;
     }
     
+    /**
+     * Sets the font size
+     * @param fontSize
+     */
     public void setFontSize(int fontSize) {
         this.fontSize = fontSize;
     }
     
+    /**
+     * Gets the font size
+     * @return fontSize
+     */
     public int getFontSize() {
         return fontSize;
     }
     
+    /**
+     * Sets the theme
+     * @param theme 
+     */
     public void setTheme(String theme) {
         this.theme = theme;
     }
     
+    /**
+     * Gets the theme
+     * @return 
+     */
     public String getTheme() {
         return theme;
     }    

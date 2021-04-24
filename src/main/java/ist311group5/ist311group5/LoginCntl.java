@@ -23,11 +23,11 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
         
-
 public class LoginCntl implements Controller{
     private LoginGUI loginUI;
     private Stage stage;
     private GeneralSettingFile generalSettingFile;
+    
     public LoginCntl(Stage stage) {
         this.stage = stage;
         loginUI = new LoginGUI(stage, this);
@@ -69,8 +69,10 @@ public class LoginCntl implements Controller{
         }
     }
     
+    /**
+     * Retrieves the general settings.
+     */
     public String[] getGeneralSetting() {
-//        String username = generalSettingFile.getUsername();
         return generalSettingFile.readFile();
     }
 }

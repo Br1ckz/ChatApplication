@@ -34,12 +34,12 @@ public class LoginGUI extends GUI{
     private Button loginBtn;
     private Text actiontarget;
     private Button createAccountBtn;
+    
     public LoginGUI(Stage stage, LoginCntl loginCntl) {
         this.loginCntl = loginCntl;
         this.stage = stage;
         setupUI();
         setupTitleFont();
-//        setupBodyFont();
         setTheme();
         setupLoginButton();
         setupCreateAccountButton();
@@ -64,7 +64,6 @@ public class LoginGUI extends GUI{
         rootPane.add(sceneTitle, 0, 1);
         
         userName = new Label("Username:");
-//        userName.setFont(new Font(getBodyTextSize()));
         rootPane.add(userName, 0, 2);
         
         userTextField = new TextField("Enter Username");
@@ -119,14 +118,11 @@ public class LoginGUI extends GUI{
         });
     }
     
+    /**
+     * Sets the theme.
+     */
     public void setTheme() {
-//        String[] data = loginCntl.getGeneralSetting(); 
-//        String theme = data[1];
-//        if (theme.equals("Dark")) {
-//            setDarkTheme();
-//        } else {
-            setLightTheme();
-//        }
+        setLightTheme();
     }
     
     /**

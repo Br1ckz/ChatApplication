@@ -9,6 +9,7 @@ public class ChatClient extends Thread {
     private DataInputStream dataInput;
     private DataOutputStream dataOutput;
     private ChatCntl chatCntl;
+    
     public ChatClient(ChatCntl chatCntl)  {
         this.chatCntl = chatCntl;
     }
@@ -43,6 +44,9 @@ public class ChatClient extends Thread {
         } catch (Exception e) { e.printStackTrace();}
     }
     
+    /**
+     * Send message to chat controller
+     */
     public void receiveMessage(String message) {
         chatCntl.serverResponse(message);
     }

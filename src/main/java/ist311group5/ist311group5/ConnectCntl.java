@@ -6,12 +6,17 @@ public class ConnectCntl implements Controller{
     private ConnectGUI connectUI;
     private Stage stage;
     private GeneralSettingFile generalSettingFile;
+    
     public ConnectCntl(Stage stage, GeneralSettingFile generalSettingFile) {
         this.stage = stage;
         this.generalSettingFile = generalSettingFile;
         connectUI = new ConnectGUI(stage, this);
     }
     
+    /**
+     * Changes the controller to chat or navigation controller.
+     * @Param controller The name of the controller to switch to.
+     */
     public void changeControl(String controller) {
         if (controller.equals("Chat")) {
             ChatCntl chatCntl = new ChatCntl(stage, generalSettingFile);
@@ -20,11 +25,17 @@ public class ConnectCntl implements Controller{
         }
     }
     
+    /**
+     * Retrieves the general settings.
+     */
     public String[] getGeneralSetting() {
         String username = generalSettingFile.getUsername();
         return generalSettingFile.readFile(username);
     }
     
+    /**
+     * Gets the font size. 
+     */
     public int getFont() {
         return generalSettingFile.getFontSize();
     }

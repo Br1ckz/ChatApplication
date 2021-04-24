@@ -7,6 +7,7 @@ public class CreateAccountCntl implements Controller {
     private Stage stage;
     private AccountFile accountFile;
     private GeneralSettingFile generalSettingFile;
+    
     public CreateAccountCntl(Stage stage, GeneralSettingFile generalSettingFile) {
         this.stage = stage;
         this.generalSettingFile = generalSettingFile;
@@ -41,8 +42,10 @@ public class CreateAccountCntl implements Controller {
         accountFile.addLogin(); 
     }
     
+    /**
+     * Gets the general settings.
+     */
     public String[] getGeneralSetting() {
-//        String username = generalSettingFile.getUsername();
         String[] data = generalSettingFile.readFile();
         return data;
     }

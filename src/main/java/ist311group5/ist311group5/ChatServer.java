@@ -10,6 +10,7 @@ public class ChatServer extends Thread {
     private ArrayList<ChatServer> threadList;
     private ChatCntl controller;
     private ArrayList<Socket> socketList;
+    
     public ChatServer(Socket socket, ArrayList<ChatServer> threads, ChatCntl chatController, ArrayList<Socket> socketList) {
         this.socket = socket;
         this.threadList = threads;
@@ -17,6 +18,11 @@ public class ChatServer extends Thread {
         this.socketList = socketList;
     }
     
+    /**
+     * Runs the chat server. 
+     * Receives and sends messages from all connected
+     * chat clients.
+     */
     @Override
     public void run() {
         try {
@@ -42,6 +48,9 @@ public class ChatServer extends Thread {
         }
     }
     
+    /**
+     * Sends message to chat controller.
+     */
     public void showMessage(String message) {
                 controller.serverResponse(message);
     }

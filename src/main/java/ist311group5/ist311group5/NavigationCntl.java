@@ -14,6 +14,10 @@ public class NavigationCntl implements Controller {
         navUI = new NavigationGUI(stage, this);
     } 
     
+    /**
+     * Changes the controls to the connect, general setting,
+     * account setting, or login controller.
+     */
     public void changeControl(String controller) {
         if (controller.equals("Connect")) {
             ConnectCntl connectCntl = new ConnectCntl(stage, generalSettingFile);
@@ -26,6 +30,9 @@ public class NavigationCntl implements Controller {
         }
     }
     
+    /**
+     * Retrieves the general settings.
+     */
     public String[] getGeneralSetting() {
         String username = generalSettingFile.getUsername();
         return generalSettingFile.readFile(username);

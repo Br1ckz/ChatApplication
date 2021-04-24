@@ -36,7 +36,6 @@ public class AccountSettingGUI extends GUI{
         this.accountSettingCntl = accountSettingCntl;
         setupUI();
         setupTitleFont();
-//        setupBodyFont();
         setTheme();
         setupBackButton();
         setupSaveButton();
@@ -209,6 +208,9 @@ public class AccountSettingGUI extends GUI{
         this.retypeNewPasswordText = retypeNewPasswordText;
     }
     
+    /**
+     * Sets theme for the account settings UI.
+     */
     public void setTheme() {
         String[] data = accountSettingCntl.getGeneralSetting(); 
         String theme = data[1];
@@ -219,6 +221,9 @@ public class AccountSettingGUI extends GUI{
         }
     }
     
+    /**
+     * Gets the font size.
+     */
     public int setFont() {
         return accountSettingCntl.getFont();
     }

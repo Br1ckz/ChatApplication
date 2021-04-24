@@ -98,6 +98,9 @@ public class ChatGUI extends GUI{
         });
     }
     
+    /**
+     * Sets theme for the Chat UI
+     */
     public void setTheme() {
         String[] data = chatCntl.getGeneralSetting(); 
         String theme = data[1];

@@ -35,7 +35,6 @@ public class GeneralSettingGUI extends GUI {
         this.generalSettingCntl = generalSettingCntl;
         setupUI();
         setupTitleFont();
-//        setupBodyFont();
         setTheme();
         setupDiscardButton();
         setupDefaultButton();
@@ -136,7 +135,6 @@ public class GeneralSettingGUI extends GUI {
      */
     private void setupFontSizeSlider() {
         fontSizeSlider = new Slider(4, 20, 12);
-//        fontSizeSlider.setShowTickMarks(true);
         fontSizeSlider.setShowTickLabels(true);
         fontSizeSlider.setSnapToTicks(true);
         fontSizeSlider.setMinorTickCount(4);
@@ -167,6 +165,9 @@ public class GeneralSettingGUI extends GUI {
         });
     }
     
+    /**
+     * Sets the theme for the general settings UI.
+     */
     public void setTheme() {
         String[] data = generalSettingCntl.getGeneralSetting(); 
         String theme = data[1];
@@ -177,6 +178,9 @@ public class GeneralSettingGUI extends GUI {
         }
     }
     
+    /**
+     * Retrieves the font size.
+     */
     public int setFont() {
         return generalSettingCntl.getFont();
     }

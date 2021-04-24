@@ -9,6 +9,7 @@ public class ChatCntl implements Controller {
     private ServerThread serverThread;
     private Stage stage;
     private GeneralSettingFile generalSettingFile;
+
     public ChatCntl(Stage stage, GeneralSettingFile generalSettingFile) {
         this.stage = stage;
         this.generalSettingFile = generalSettingFile;
@@ -16,6 +17,9 @@ public class ChatCntl implements Controller {
         chat();
     }
  
+    /**
+     * Starts the server thread and chat client
+     */
     public void chat() {
          try {
             System.out.println("Starting chat");
@@ -32,20 +36,33 @@ public class ChatCntl implements Controller {
         };
     }
     
+    /**
+     * Sends input to chat client
+     */
     public void chatInput(String message) {
         client.sendMessage(message);
     }  
     
+    /**
+     * Receives message from chat client and 
+     * sends to chat UI
+     */
     public void serverResponse(String message) {
         chatUI.updateChat("Server", message);
     }
     
+    /**
+     * Changes the controls to to navigation controller
+     */
     public void changeControl(String controller) {
         if (controller.equals("Back")) {
             ConnectCntl navCntl = new ConnectCntl(stage, generalSettingFile);
         }
     }
     
+    /**
+     * Retrieves the general settings.
+     */
     public String[] getGeneralSetting() {
         String username = generalSettingFile.getUsername();
         return generalSettingFile.readFile(username);
