@@ -110,6 +110,19 @@ public class NavigationGUI extends GUI{
     /**
      * Sets the theme.
      */
+
+    public Label getLoginText() {
+        return loginText;
+    }
+
+    /**
+     * @param loginText the loginText to set
+     */
+    public void setLoginText(Label loginText) {
+        this.loginText = loginText;
+    }
+    
+    @Override
     public void setTheme() {
         String data[] = navCntl.getGeneralSetting(); 
         String theme = data[1];
