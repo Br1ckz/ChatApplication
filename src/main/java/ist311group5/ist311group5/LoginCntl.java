@@ -46,7 +46,7 @@ public class LoginCntl implements Controller{
                 String[] line = reader.nextLine().split(" ");
                 if (line[0].equals(userName) && line[1].equals(password)) {
                     generalSettingFile = new GeneralSettingFile(userName, password);
-                    getGeneralSetting();
+                    generalSettingFile.createFile(userName);
                     return true;
                 }
             }
