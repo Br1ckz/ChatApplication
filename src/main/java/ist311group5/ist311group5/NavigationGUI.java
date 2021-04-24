@@ -123,6 +123,7 @@ public class NavigationGUI extends GUI{
         this.loginText = loginText;
     }
     
+    @Override
     public void setTheme() {
         String data[] = navCntl.getGeneralSetting(); 
         String theme = data[1];
